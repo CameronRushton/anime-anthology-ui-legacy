@@ -1,415 +1,400 @@
-//All style goes here
+$green: #06b124;
+$yellow: #c3981d;
+$orange: #ef874b;
+$red: #d61123;
+$title-color: #FFF;
+$subtitle-color: honeydew;
+$text-color: #999;
+$background-color: #303030;
+$background-border: #252525;
 
-/*=================== fonts ====================
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700|Roboto:300,300i,400,500,700");*/
+.green {
+  color: $green;
+}
+.yellow {
+  color: $yellow;
+}
+.orange {
+  color: $orange;
+}
+.red {
+  color: $red;
+}
+
+.header1 {
+  background: $background-border;
+  position: fixed;
+  width: 100%;
+  height: 80px;
+  top: 0px;
+  left: 0px;
+  display: flex;
+  overflow: hidden;
+  justify-content: space-around;
+  padding-top: 5px;
+  transition: height 0.5s ease-out 0ms,
+    width 0.5s ease-out 0.5s,
+    top 0.5s ease-out 0ms,
+    left 0.5s ease-out 0ms;
+  .title {
+    font-family: inherit;
+    font-size: x-large;
+    font-weight: 600;
+    color: $title-color;
+    transition: opacity 0.3s ease-out 1.0s;
+    display: flex;
+    align-items: center;
+    .logo {
+      width: 70px;
+      height: 70px;
+    }
+  }
+  .navigation {
+    display: flex;
+    align-items: center;
+    transition: opacity 0.3s ease-out 1.0s;
+    .item {
+      display: flex;
+      height: fit-content;
+      cursor: pointer;
+      margin-right: 20px;
+      font-size: 20px;
+      color: $subtitle-color;
+      &.active {
+        border-bottom: 2px solid $green;
+      }
+    }
+    .item:hover {
+      color: $text-color;
+    }
+  }
+  &.fixed {
+    position: fixed;
+    z-index: 5;
+  }
+}
+
+.header2 {
+  background: $background-border;
+  position: fixed;
+  overflow: hidden;
+  font-size: 25px;
+  left: 20px;
+  top: 40px;
+  width: 40px;
+  height: 300px;
+  transition: width 0.5s ease-out 0ms,
+    height 0.5s ease-out 0.5s,
+    top 0.5s ease-out 0ms,
+    left 0.5s ease-out 0ms;
+  z-index: 5;
+  border-radius: 20px;
+  .navigation2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: center;
+    height: 100%;
+    transition: opacity 0.5s ease-out 1.0s;
+    .angle-arrow {
+      font-family: monospace;
+      font-size: 30px;
+      cursor: pointer;
+    }
+    .item {
+      color: $subtitle-color;
+      &.active {
+        border-right: 1px solid $green;
+      }
+    }
+    .item:hover {
+      color: $text-color;
+    }
+  }
+}
+.opacity0 {
+  opacity: 0;
+  width: 0px;
+  height: 0px;
+  visibility: hidden;
+}
+.opacity1 {
+  opacity: 1;
+}
+.no-display {
+  display: none;
+}
 
 a {
-    text-decoration: none;
-    -webkit-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-  }
+  text-decoration: none;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
   
-  a:hover, a:focus {
-    text-decoration: none;
-    outline: none;
-  }
+a:hover, a:focus {
+  text-decoration: none;
+  outline: none;
+}
   
-  .row.m0 {
-    margin: 0px;
-  }
-  
-  .text_border {
-    -webkit-text-stroke: 1px black;
-  }
-  
-  .text_shadow {
-      text-shadow: 2px 2px #fff;
-  }
-  
-  body {
-    line-height: 24px;
-    font-size: 14px;
-    font-family: "Roboto", sans-serif;
-    font-weight: normal;
-    color: #999;
-  }
-  
-  h1, h2, h3, h4, h5, h6 {
-    font-family: "Open Sans", sans-serif;
-    font-weight: 600;
-  }
-  
-  button:focus {
-    outline: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-  }
-  
-  .p_120 {
-    padding-top: 120px;
-    padding-bottom: 120px;
-  }
-  
-  .p_60 {
-    padding-top: 60px;
-    padding-bottom: 60px;
-  }
-  
-  .pad_top {
-    padding-top: 120px;
-  }
-  
-  .mt-25 {
-    margin-top: 25px;
-  }
-  
-  .p0 {
-    padding-left: 0px;
-    padding-right: 0px;
-  }
-  
-  @media (min-width: 1200px) {
-    .container {
-      max-width: 1170px;
-    }
-  }
-  
-  @media (min-width: 1620px) {
-    .box_1620 {
-      max-width: 1650px;
-      margin: auto;
-    }
-  }
-  
-  /* Main Title Area css
-  ============================================================================================ */
-  .main_title {
-    text-align: center;
-  }
-  
-  .main_title h2 {
-    font-family: "Roboto", sans-serif;
+body {
+  line-height: 24px;
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
+  color: $text-color;
+  background-color: $background-color;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+}
+
+.main-title {
+  text-align: center;
+  background: $background-color;
+  padding-top: 120px;
+  padding-bottom: 20px;
+  h2 {
     font-size: 36px;
-    color: #fff;
+    color: $title-color;
     font-weight: 600;
     margin-bottom: 15px;
   }
-  
-  .main_title p {
+  p {
     font-size: 14px;
-    font-family: "Roboto", sans-serif;
     line-height: 24px;
-    color: #777777;
+    color: $text-color;
     margin-bottom: 0px;
     max-width: 570px;
     font-weight: normal;
     margin: auto;
   }
-  
-  .main_title.white h2 {
-    color: #fff;
-  }
-  
-  .main_title.white p {
-    color: #fff;
-    opacity: .6;
-  }
-  
-  /* End Main Title Area css
-  ============================================================================================ */
-  /*---------------------------------------------------- */
-  /*----------------------------------------------------*/
-  .header_area {
-    position: absolute;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 99;
-    -webkit-transition: background 0.4s, all 0.3s linear;
-    -o-transition: background 0.4s, all 0.3s linear;
-    transition: background 0.4s, all 0.3s linear;
-  }
-  
-  .header_area .navbar {
-    background: transparent;
-    padding: 0px;
-    border: 0px;
-    border-radius: 0px;
-  }
-  
-  .header_area .navbar .nav .nav-item {
-    margin-right: 45px;
-  }
-  
-  /* Navbar words (Home, anime, etc...) */
-  .header_area .navbar .nav .nav-item .nav-link {
-    font: 600 12px/100px "Open Sans", sans-serif;
-    text-transform: uppercase;
-    color: #fff;
-    padding: 0px;
-    display: inline-block;
-  }
-  
-  .header_area .navbar .nav .nav-item .nav-link:after {
-    display: none;
-  }
-  
-  .header_area .navbar .search {
-    font-size: 12px;
-    line-height: 60px;
-    display: inline-block;
-    color: #222222;
-    margin-left: 80px;
-  }
-  
-  .header_area .navbar .search i {
-    font-weight: 600;
-  }
-  
-  .header_area.navbar_fixed .main_menu {
-    position: fixed;
-    width: 100%;
-    top: -70px;
-    left: 0;
-    right: 0;
-    background-image: -moz-linear-gradient(0deg, #3a3a3a 0%, #282828 100%);
-    background-image: -webkit-linear-gradient(0deg, #3a3a3a 0%, #282828 100%);
-    background-image: -ms-linear-gradient(0deg, #3a3a3a 0%, #282828 100%);
-    -webkit-transform: translateY(70px);
-    -ms-transform: translateY(70px);
-    transform: translateY(70px);
-    -webkit-transition: background 500ms ease, -webkit-transform 500ms ease;
-    transition: background 500ms ease, -webkit-transform 500ms ease;
-    -o-transition: transform 500ms ease, background 500ms ease;
-    transition: transform 500ms ease, background 500ms ease;
-    transition: transform 500ms ease, background 500ms ease, -webkit-transform 500ms ease;
-    -webkit-transition: transform 500ms ease, background 500ms ease;
-    -webkit-box-shadow: 0px 3px 16px 0px rgba(0, 0, 0, 0.1);
-    box-shadow: 0px 3px 16px 0px rgba(0, 0, 0, 0.1);
-  }
-  
-  .header_area.navbar_fixed .main_menu .navbar .nav .nav-item .nav-link {
-    line-height: 70px;
-  }
-  
-  
-  /*---------------------------------------------------- */
-  /*----------------------------------------------------*/
-  /* Home Banner Area css
-  ============================================================================================ */
-  
-  .home_banner_area .banner_inner {
-    overflow: hidden;
-    width: 100%;
-    padding: 170px 0px 140px 0px;
-  }
-  
-  .home_banner_area .banner_inner .banner_content {
-    color: #fff;
-  }
-  
-  .home_banner_area .banner_inner .banner_content .col-lg-9 {
-    vertical-align: middle;
-    -ms-flex-item-align: center;
-    align-self: center;
-  }
-  
-  .banner_area {
+}
+
+.background-image:before {
+  content: '';
+  position: absolute;
+  left: 0; 
+  right: 0;
+  top: 0px;
+  bottom: 925px;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0), $background-color 100%);
+  opacity: 1;
+}
+.background-image {
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+  z-index: 0;
+  height: 1000px;
+  .box-art-area {
     position: relative;
-    z-index: 1;
-    min-height: 400px;
-    background-image: -moz-linear-gradient(0deg, rgba(188, 43, 255, 0.8) 0%, rgba(114, 73, 251, 0.8) 100%);
-    background-image: -webkit-linear-gradient(0deg, rgba(188, 43, 255, 0.8) 0%, rgba(114, 73, 251, 0.8) 100%);
-    background-image: -ms-linear-gradient(0deg, rgba(188, 43, 255, 0.8) 0%, rgba(114, 73, 251, 0.8) 100%);
+    left: 80px;
+    top: 700px;
+    width: 356px;
+    .percent-upvoted {
+      font-family: fantasy;
+      font-size: 6rem;
+      transform: rotate(20deg);
+      position: absolute;
+      z-index: 2;
+      right: -60px;
+    }
+    .box-art-container {
+      text-align: left;
+      .box-art {
+        border: solid;
+        border-color: black;
+        position: relative;
+        z-index: 1;
+        box-shadow: -3px 3px 20px 0px black;
+      }
+    }
+    .studio {
+      text-align: center;
+      font-size: 2rem;
+      font-family: sans-serif;
+      color: $subtitle-color;
+      padding-bottom: 5px;
+      padding-top: 5px;
+    }
   }
-  
-  .image_border {
-      border: solid;
-      border-color: black;
-  }
-  
-  /* End Home Banner Area css
-  ============================================================================================ */
-  
-  .feature_area {
-      background-color: #303030;
-      border-top: solid;
-      border-right: solid;
-      border-left: solid;
-      border-top-color: #252525;
-      border-right-color: #252525;
-      border-left-color: #252525;
-      border-top-width: thick;
-      border-right-width: thick;
-      border-left-width: thick;
-  }
-  
-  .anime_name {
-      font-family: AnimeAce;
-      color: black;
-    -webkit-text-fill-color: white; /* Will override color (regardless of order) */
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: black;
-    text-shadow:
-         3px 3px 0 #000,
-       -1px -1px 0 #000,  
-        1px -1px 0 #000,
-        -1px 1px 0 #000,
-         1px 1px 0 #000;
-  }
-  
-  .mb-20 {
-    margin-bottom: 20px;
-  }
-  
-  .mb-30 {
-    margin-bottom: 30px;
-  }
-  
-  h1 {
-    font-size: 36px;
-  }
-  
-  h2 {
-    font-size: 30px;
-  }
-  
-  h3 {
-    font-size: 24px;
-  }
-  
-  h4 {
-    font-size: 18px;
-  }
-  
-  h5 {
-    font-size: 16px;
-  }
-  
-  h6 {
-    font-size: 14px;
-  }
-  
-  /* Genre buttons */
-  
-  .circle {
-    border-radius: 20px;
-  }
-  
-  .genre-btn {
-    display: inline-block;
-    outline: none;
-    line-height: 40px;
-    padding: 0 15px;
-    font-size: 1em;
-    text-align: center;
-    text-decoration: none;
-    font-weight: 500;
+}
+
+.details-container {
+    background-color: $background-color;
+    border-top: solid;
+    border-right: solid;
+    border-left: solid;
+    border-color: $background-border;
+    border-width: thick;
+    padding-top: 10px;
+    padding-left: 450px;
+    padding-right: 10px;
+    .main-details {
+      display: flex;
+      min-height: 210px;
+      .side {
+        min-width: 350px;
+        .data-item {
+
+        }
+      }
+      .middle {
+        text-align: center;
+        min-width: 730px;
+        .anime-name {
+          font-family: sans-serif;
+          color: $title-color;
+          margin-bottom: 0px;
+        }
+        .synonyms {
+          padding-bottom: 10px;
+        }
+      }
+      .ranking-area {
+        text-align: center;
+        justify-content: center;
+        flex-direction: column;
+        display: flex;
+        .rank {
+          font-family: fantasy;
+          font-size: 3rem;
+          color: $yellow;
+          margin-top: auto;
+        }
+        .text {
+          color: $subtitle-color;
+          padding-top: 15px;
+          font-family: sans-serif;
+          font-size: medium;
+          font-weight: 700;
+        }
+        .text:last-child {
+          margin-bottom: auto;
+        }
+      }
+      
+    }
+    .genres {
+      text-align: center;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      width: 1430px;
+      .genre {
+        display: inline-block;
+        margin-right: 10px;
+        outline: none;
+        line-height: 40px;
+        padding: 0 15px;
+        font-size: 1em;
+        text-align: center;
+        text-decoration: none;
+        font-weight: 500;
+        cursor: pointer;
+        border: 1px solid $text-color;
+        border-radius: 20px;
+        color: $subtitle-color;
+      }
+      .genre:first-child {
+        margin-left: 10px;
+      }
+      .genre:last-child {
+        margin-right: 0px;
+      }
+    }
+}
+
+.thin-outline {
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.med-outline {
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+}
+.thick-outline {
+  text-shadow: -3px 0px black, 0 3px black, 3px 0 black, 0 -3px black;
+}
+.w0 {
+  width: 0px;
+}
+.w20 {
+  width: 20px;
+}
+.w100p {
+  width: 100%;
+}
+.h80 {
+  height: 80px;
+}
+.h300 {
+  height: 300px
+}
+
+.extra-info-area {
+  position: absolute;
+  display: flex;
+  top: 200px;
+  left: 355px;
+  z-index: 1;
+  .extra-info {
+    background: $background-color;
+    transition: width 0.4s ease-out 0ms;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 0px 5px;
     cursor: pointer;
-    -webkit-transition: all 0.3s ease 0s;
-    -moz-transition: all 0.3s ease 0s;
-    -o-transition: all 0.3s ease 0s;
-    transition: all 0.3s ease 0s;
+    display: flex;
+    .static-info-container {
+      min-width: 1400px;
+      display: flex;
+      flex-wrap: wrap;
+      .tag {
+        display: flex;
+        height: 15px;
+        padding-right: 20px;
+        padding-top: 10px;
+        align-items: center;
+        .name {
+          padding-right: 5px;
+        }
+        .progress-bar {
+          width: 100px;
+          height: 10px;
+          border: 1px solid $subtitle-color;
+          border-radius: 5px;
+          background-color: $background-color;
+          .progress {
+            height: 8px;
+            border-radius: 5px;
+            background: $green;
+          }
+        }
+      }
+    }
   }
-  
-  .genre-btn:focus {
-    outline: none;
+  .w1400 {
+    width: 1400px;
   }
-  
-  .genre-btn.e-large {
-    padding: 0 40px;
-    line-height: 50px;
+  .angle-icon {
+    cursor: pointer;
+    align-self: center;
+    background: $background-color;
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: monospace;
+    border-radius: 0px 5px 5px 0px;
+    padding: 13px 5px 15px 0px;
   }
-  
-  .genre-btn.large {
-    line-height: 45px;
+}
+
+.footer-area {
+  background: $background-border;
+  padding: 85px 0px 85px 0px;
+  display: flex;
+  justify-content: space-around;
+  .text {
+    color: $subtitle-color;
   }
-  
-  .genre-btn.medium {
-    line-height: 30px;
-  }
-  
-  .genre-btn.small {
-    line-height: 25px;
-  }
-  
-  .genre-btn.radius1 {
-    border-radius: 3px;
-  }
-  
-  .genre-btn.circle {
-    border-radius: 20px;
-  }
-  
-  .genre-btn.black-border {
-    color: #fff;
-    border: 1px solid #fff;
-    background: #313131;
-  }
-  
-  .genre-btn.black-border:hover { /*TODO*/
-    color: #fff;
-    background: #7a7a7a;
-    border: 1px solid transparent;
-  }
-  
-  .mt-10 {
-    margin-top: 10px;
-  }
-  
-  /*----------------------------------------------------*/
-  /*============== footer-area css ===============*/
-  .footer-area {
-    background: #222222;
-  }
-  
-  .footer-bottom {
-    padding-top: 85px;
-  }
-  
-  .footer-bottom .footer-text {
-    color: #fff;
-    opacity: .6;
-  }
-  
-  .footer-bottom .footer-text i {
-    color: #6247ea;
-    opacity: 1;
-  }
-  
-  .footer-bottom .footer-text a {
-    color: #6247ea;
-    opacity: 1;
-  }
-  
-  .footer-bottom .footer-social {
-    text-align: right;
-  }
-  
-  .footer-bottom .footer-social a {
-    font-size: 14px;
-    line-height: 30px;
-    color: #fff;
-    margin-left: 6px;
-    -webkit-transition: all 0.3s linear;
-    -o-transition: all 0.3s linear;
-    transition: all 0.3s linear;
-    background: #111111;
-    height: 30px;
-    width: 30px;
-    text-align: center;
-    display: inline-block;
-    -webkit-transition: all 300ms linear 0s;
-    -o-transition: all 300ms linear 0s;
-    transition: all 300ms linear 0s;
-  }
-  
-  .footer-bottom .footer-social a:hover {
-    color: #fff;
-    background-image: -moz-linear-gradient(0deg, rgba(188, 43, 255, 0.8) 0%, rgba(114, 73, 251, 0.8) 100%);
-    background-image: -webkit-linear-gradient(0deg, rgba(188, 43, 255, 0.8) 0%, rgba(114, 73, 251, 0.8) 100%);
-    background-image: -ms-linear-gradient(0deg, rgba(188, 43, 255, 0.8) 0%, rgba(114, 73, 251, 0.8) 100%);
-  }
-  .home_banner_area51 {z-index: 1;background: url(/anime/hunter-x-hunter-2011/images/hunter-x-hunter-2011-anilist-cover.jpg) no-repeat scroll center;background-size: cover; background-image: -webkit-linear-gradient(left, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.9) 100%), url(/anime/hunter-x-hunter-2011/images/hunter-x-hunter-2011-anilist-cover.jpg);}.home_banner_area106 {z-index: 1;background: url(/anime/samurai-champloo/images/samurai-champloo-anilist-cover.jpg) no-repeat scroll center;background-size: cover; background-image: -webkit-linear-gradient(left, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.9) 100%), url(/anime/samurai-champloo/images/samurai-champloo-anilist-cover.jpg);}.home_banner_area138 {z-index: 1;background: url(/anime/tokyo-ghoul/images/tokyo-ghoul-anilist-cover.jpg) no-repeat scroll center;background-size: cover; background-image: -webkit-linear-gradient(left, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.9) 100%), url(/anime/tokyo-ghoul/images/tokyo-ghoul-anilist-cover.jpg);}.home_banner_area103 {z-index: 1;background: url(/anime/rezero-kara-hajimeru-isekai-seikatsu/images/rezero-kara-hajimeru-isekai-seikatsu-anilist-cover.jpg) no-repeat scroll center;background-size: cover; background-image: -webkit-linear-gradient(left, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.9) 100%), url(/anime/rezero-kara-hajimeru-isekai-seikatsu/images/rezero-kara-hajimeru-isekai-seikatsu-anilist-cover.jpg);}.home_banner_area66 {z-index: 1;background: url(/anime/koe-no-katachi/images/koe-no-katachi-anilist-cover.jpg) no-repeat scroll center;background-size: cover; background-image: -webkit-linear-gradient(left, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.9) 100%), url(/anime/koe-no-katachi/images/koe-no-katachi-anilist-cover.jpg);}.home_banner_area61 {z-index: 1;background: url(/anime/kimi-no-na-wa/images/kimi-no-na-wa-anilist-cover.jpg) no-repeat scroll center;background-size: cover; background-image: -webkit-linear-gradient(left, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.9) 100%), url(/anime/kimi-no-na-wa/images/kimi-no-na-wa-anilist-cover.jpg);}.home_banner_area129 {z-index: 1;background: url(/anime/steinsgate/images/steinsgate-anilist-cover.jpg) no-repeat scroll center;background-size: cover; background-image: -webkit-linear-gradient(left, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.9) 100%), url(/anime/steinsgate/images/steinsgate-anilist-cover.jpg);}.home_banner_area34 {z-index: 1;background: url(/anime/fullmetal-alchemist-brotherhood/images/fullmetal-alchemist-brotherhood-anilist-cover.jpg) no-repeat scroll center;background-size: cover; background-image: -webkit-linear-gradient(left, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.9) 100%), url(/anime/fullmetal-alchemist-brotherhood/images/fullmetal-alchemist-brotherhood-anilist-cover.jpg);}.home_banner_area80 {z-index: 1;background: url(/anime/mononoke-hime/images/mononoke-hime-anilist-cover.jpg) no-repeat scroll center;background-size: cover; background-image: -webkit-linear-gradient(left, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.9) 100%), url(/anime/mononoke-hime/images/mononoke-hime-anilist-cover.jpg);}.home_banner_area116 {z-index: 1;background: url(/anime/shingeki-no-kyojin/images/shingeki-no-kyojin-anilist-cover.jpg) no-repeat scroll center;background-size: cover; background-image: -webkit-linear-gradient(left, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.9) 100%), url(/anime/shingeki-no-kyojin/images/shingeki-no-kyojin-anilist-cover.jpg);}.fade-disconnect-top {background-size: cover; background-attachment: fixed; height: 350px; position: relative;}
-  .fade-disconnect-top:before{content: ''; position: absolute; left: 0;  right: 0; top: 0px; bottom: 925px; background: linear-gradient(to top, rgba(255, 255, 255, 0), #303030 100%); opacity: 1.0;}.home_banner_area51 {z-index: 1;background: url(/anime/hunter-x-hunter-2011/images/hunter-x-hunter-2011-cover.jpg) no-repeat scroll center;background-size: cover; background-image: -webkit-linear-gradient(left, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.9) 100%), url(/anime/hunter-x-hunter-2011/images/hunter-x-hunter-2011-cover.jpg);}.home_banner_area106 {z-index: 1;background: url(/anime/samurai-champloo/images/samurai-champloo-cover.jpg) no-repeat scroll center;background-size: cover; background-image: -webkit-linear-gradient(left, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.9) 100%), url(/anime/samurai-champloo/images/samurai-champloo-cover.jpg);}.home_banner_area138 {z-index: 1;background: url(/anime/tokyo-ghoul/images/tokyo-ghoul-cover.jpg) no-repeat scroll center;background-size: cover; background-image: -webkit-linear-gradient(left, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.9) 100%), url(/anime/tokyo-ghoul/images/tokyo-ghoul-cover.jpg);}.home_banner_area103 {z-index: 1;background: url(/anime/rezero-kara-hajimeru-isekai-seikatsu/images/rezero-kara-hajimeru-isekai-seikatsu-cover.jpg) no-repeat scroll center;background-size: cover; background-image: -webkit-linear-gradient(left, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.9) 100%), url(/anime/rezero-kara-hajimeru-isekai-seikatsu/images/rezero-kara-hajimeru-isekai-seikatsu-cover.jpg);}.home_banner_area66 {z-index: 1;background: url(/anime/koe-no-katachi/images/koe-no-katachi-cover.jpg) no-repeat scroll center;background-size: cover; background-image: -webkit-linear-gradient(left, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.9) 100%), url(/anime/koe-no-katachi/images/koe-no-katachi-cover.jpg);}.home_banner_area61 {z-index: 1;background: url(/anime/kimi-no-na-wa/images/kimi-no-na-wa-cover.jpg) no-repeat scroll center;background-size: cover; background-image: -webkit-linear-gradient(left, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.9) 100%), url(/anime/kimi-no-na-wa/images/kimi-no-na-wa-cover.jpg);}.home_banner_area129 {z-index: 1;background: url(/anime/steinsgate/images/steinsgate-cover.jpg) no-repeat scroll center;background-size: cover; background-image: -webkit-linear-gradient(left, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.9) 100%), url(/anime/steinsgate/images/steinsgate-cover.jpg);}.home_banner_area34 {z-index: 1;background: url(/anime/fullmetal-alchemist-brotherhood/images/fullmetal-alchemist-brotherhood-cover.jpg) no-repeat scroll center;background-size: cover; background-image: -webkit-linear-gradient(left, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.9) 100%), url(/anime/fullmetal-alchemist-brotherhood/images/fullmetal-alchemist-brotherhood-cover.jpg);}.home_banner_area80 {z-index: 1;background: url(/anime/mononoke-hime/images/mononoke-hime-anilist-cover.jpg) no-repeat scroll center;background-size: cover; background-image: -webkit-linear-gradient(left, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.9) 100%), url(/anime/mononoke-hime/images/mononoke-hime-anilist-cover.jpg);}.home_banner_area116 {z-index: 1;background: url(/anime/shingeki-no-kyojin/images/shingeki-no-kyojin-cover.jpg) no-repeat scroll center;background-size: cover; background-image: -webkit-linear-gradient(left, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.9) 100%), url(/anime/shingeki-no-kyojin/images/shingeki-no-kyojin-cover.jpg);}.fade-disconnect-top {background-size: cover; background-attachment: fixed; height: 350px; position: relative;}
+}

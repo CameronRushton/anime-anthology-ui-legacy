@@ -1,447 +1,104 @@
-<!-- <!doctype html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" href="img/logo.png" type="image/png">
-    <title>Shoyu's Anime Anthology</title>
-    bootstrap css
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="vendors/linericon/style.css">
-    <link rel="stylesheet" href="css/fonts.css">
-    <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
-    <link rel="stylesheet" href="vendors/lightbox/simpleLightbox.css">
-    <link rel="stylesheet" href="vendors/nice-select/css/nice-select.css">
-    <link rel="stylesheet" href="vendors/animate-css/animate.css">
-    <link rel="stylesheet" href="vendors/popup/magnific-popup.css">
-    main css
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
-</head>
 <template>
     <section>
-        <body data-spy="scroll" data-target="#mainNav" data-offset="70">
-            <header class="header_area">
-                <div class="main_menu" id="mainNav">
-                    <nav class="navbar navbar-expand-lg navbar-light">
-                        <div class="container" style="color:#000">
-                            <img src="img/logo.png" alt="" style="height:60px; padding-right:10px;">
-                            <h5 style="margin-bottom:0px; color: white;">Shoyu's anime anthology</h5><button
-                                class="navbar-toggler" type="button" data-toggle="collapse"
-                                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                                aria-expanded="false" aria-label="Toggle navigation"><span class="icon-bar"></span><span
-                                    class="icon-bar"></span><span class="icon-bar"></span></button>
-                            <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-                                <ul class="nav navbar-nav menu_nav ml-auto">
-                                    <li class="nav-item active"><a href="home.html" class="nav-link">Home</a></li>
-                                    <li class="nav-item"><a href="level one.html" class="nav-link">Level 1</a></li>
-                                    <li class="nav-item"><a href="level two.html" class="nav-link">Level 2</a></li>
-                                    <li class="nav-item"><a href="level three.html" class="nav-link">Level 3</a></li>
-                                    <li class="nav-item"><a href="level four.html" class="nav-link">Level 4</a></li>
-                                    <li class="nav-item"><a href="level five.html" class="nav-link">Level 5</a></li>
-                                </ul>
+        <nav class="${scrollPosition > 90? 'header2':'header1'}">
+            <div class="title ${scrollPosition > 90? 'opacity0':'opacity1'}">
+                <img src="/assets/images/logo.png" alt="" class="logo ${scrollPosition > 90? 'opacity0':''}">
+                Shoyu's Anime Anthology
+            </div>
+            <div class="navigation ${scrollPosition > 90? 'opacity0':'opacity1'}">
+                <a repeat.for="route of router.routes" class="item ${route.navModel.isActive? 'active':''} ${scrollPosition > 90? 'opacity0':''}" href.bind="route.route">${route.title}</a>
+            </div>
+            <div class="navigation2 ${scrollPosition > 90? 'opacity1':'opacity0 no-display'}">
+                <a class="item angle-arrow ${scrollPosition > 90? 'opacity1':'opacity0 no-display'}" click.delegate="scrollToTop()">^</a>
+                <a repeat.for="route of router.routes" class="item ${route.navModel.isActive? 'active':''} ${scrollPosition > 90? 'opacity1':'opacity0 no-display'}" href.bind="route.route">${route.char}</a>
+            </div>
+        </nav>
+        <div id="top" class="main-title">
+            <h2 class="med-outline">Level One</h2>
+            <p>Some of the best anime I've ever seen. All are excellent starting points for new anime fans. 
+                I guarantee that at least one of these shows is in your top 10 as well. 
+                There will be something you like in here. We're just skimming the surface.
+                <br/>Watch at least 4 of these to continue to level two.
+            </p>
+        </div>
+        <div repeat.for="anime of levelOneData">
+            <section id="anime.name" css="background-image: -webkit-linear-gradient(left, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.9) 100%), url(${anime.background});" class="background-image">
+                <div class="box-art-area">
+                    <p class="percent-upvoted thin-outline ${anime.scoreColour}">${anime.score}%</p>
+
+                    <div class="extra-info-area">
+                        <div class="extra-info ${anime.toggleExtraInfo ? 'w1400':'w0'}" click.trigger="anime.toggleExtraInfo = !anime.toggleExtraInfo">
+                            <div class="static-info-container">
+                                <div repeat.for="tag of anime.customTags" class="tag">
+                                    <div class="name">${tag.name}</div>
+                                    <div class="progress-bar">
+                                        <div class="progress" css="width: ${tag.percent}px;"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </nav>
-                </div>
-            </header>
-            <section class="screenshot_area" style="padding-top: 120px; padding-bottom: 20px;">
-                <div class="container">
-                    <div class="main_title">
-                        <h2>Welcome to level one</h2>
-                        <p>Shoyu's top 10 anime ever seen, in no particular order. I guarantee that at least one of these shows
-                            is in your top 10 as well. New to anime? Start with these. There will be something you like in here.
-                            We're just skimming the surface. Watch at least 4 of these to continue to level two.</p>
+                        <a click.trigger="anime.toggleExtraInfo = !anime.toggleExtraInfo" class="angle-icon">></a>
+                    </div>
+
+                    <div class="box-art-container">
+                        <img src.bind="anime.boxArt" alt="" class="img-fluid box-art">
+                    </div>
+                    
+                    <div class="studio thick-outline">
+                        <span repeat.for="studio of anime.studios">
+                            <strong>${studio}</strong>
+                        </span>
                     </div>
                 </div>
             </section>
-            <section class="screenshot_area" style="padding-top:40px; padding-bottom:60px;">
-                <div class="container">
-                    <div class="main_title">
-                        <h2> Featured Shows </h2>
+            
+            <section class="details-container">
+                <div class="main-details">
+                    <div class="side">
+                        <div class="data-item">Format: <strong>${anime.format}</strong></div>
+                        <div class="data-item" if.bind="anime.startDate && anime.endDate">Start Date: <strong>${anime.startDate}</strong> End Date: <strong>${anime.endDate}</strong></div>
+                        <div class="data-item" if.bind="anime.releaseDate">Release Date: <strong>${anime.releaseDate}</strong></div>
+                        <div class="data-item">Status: <strong>${anime.status}</strong></div>
+                        <div class="data-item" if.bind="anime.episodeDuration">Episodes: <strong>${anime.episodes} </strong>x <strong>${anime.episodeDuration} </strong>= <strong>${anime.totalDuration} ${anime.totalDurationUnits}</strong></div>
+                        <div class="data-item" if.bind="anime.duration">Duration: <strong>${anime.duration}</strong></div>
+                        <div class="data-item">Season: <strong>${anime.season}</strong></div>
+                        <div class="data-item">Producers: <strong repeat.for="producer of anime.producers">${producer} </strong></div>
                     </div>
-                    <div class="screenshot_inner owl-carousel"><a href="level one.html#samurai-champloo">
-                            <div class="item">
-                                <img src="assets\anime\samurai-champloo\images\samurai-champloo-anilist-box-art.jpg" alt=""></div>
-                        </a><a href="level one.html#rezero-kara-hajimeru-isekai-seikatsu">
-                            <div class="item"><img
-                                    src="assets\anime\rezero-kara-hajimeru-isekai-seikatsu\images\rezero-kara-hajimeru-isekai-seikatsu-anilist-box-art.jpg"
-                                    alt=""></div>
-                        </a><a href="level one.html#kimi-no-na-wa">
-                            <div class="item"><img src="assets\anime\kimi-no-na-wa\images\kimi-no-na-wa-anilist-box-art.jpg" alt="">
-                            </div>
-                        </a><a href="level one.html#steinsgate">
-                            <div class="item"><img src="assets\anime\steinsgate\images\steinsgate-anilist-box-art.jpg" alt=""></div>
-                        </a><a href="level one.html#koe-no-katachi">
-                            <div class="item"><img src="assets\anime\koe-no-katachi\images\koe-no-katachi-anilist-box-art.jpg" alt="">
-                            </div>
-                        </a></div>
-                </div>
-            </section>
-            <section id="hunter-x-hunter-2011" name="hunter-x-hunter-2011" class="fade-disconnect-top home_banner_area51"
-                style="height: 1000px">
-                <div style="position:relative; left:80px; top:700px; width: 356px">
-                    <div style="text-align: left"><img
-                            src="assets\anime\hunter-x-hunter-2011\images\hunter-x-hunter-2011-anilist-box-art.jpg" alt=""
-                            class="img-fluid image_border"></div>
-                </div>
-            </section>
-            <section class="feature_area"
-                style="padding-top:10px; padding-left:450px; padding-right:10px; height:207px; display: flex;">
-                <div style="height: 100%; padding-right: 10px;">#3 Highest Rated All Time: <strong>#25 Most Popular All
-                        Time</strong><br>Format: <strong>TV</strong><br>Episodes: <strong>148</strong><br>Episode Duration:
-                    <strong>23 mins</strong><br>Status: <strong>Finished</strong><br>Start Date: <strong>Oct 2,
-                        2011</strong><br>End Date: <strong>Sep 24, 2014</strong><br>Season: <strong>Fall 2011</strong><br>Mean
-                    Score: <strong>90%</strong><br>Popularity: <strong>63906</strong><br>Favorites:
-                    <strong>7264</strong><br>Source: <strong>Manga</strong><br>Romaji: <strong>Hunter x Hunter
-                        (2011)</strong><br>English: <strong>Hunter x Hunter (2011)</strong><br>Studios:
-                    <strong>MADHOUSE</strong><br>Producers: <strong>VAP</strong><br>Nippon Animation: <strong>Viz
-                        Media</strong><br>Genres: <strong>Action, Adventure, Fantasy</strong><br>Synonyms: <strong>HxH
-                        (2011)</strong><br>Cultivation: <strong>91%</strong><br>Shounen: <strong>90%</strong><br>Super Power:
-                    <strong>90%</strong><br>Male Protagonist: <strong>83%</strong><br>Primarily Male Cast:
-                    <strong>77%</strong><br>Coming of Age: <strong>75%</strong><br>Foreign: <strong>59%</strong><br>Assassins:
-                    <strong>58%</strong><br>Revenge: <strong>53%</strong><br>Gangs: <strong>48%</strong><br></div>
-                <div style="text-align: center; height: 100%; width: 75%;">
-                    <h1 class="anime_name">hunter x hunter 2011</h1>
-                    <p>https://anilist.co/anime/11061/Hunter-x-Hunter-2011/</p>
-                    <div><a href="#" class="genre-btn black-border circle"><span>Action</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Adventure</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Fantasy</span></a></div>
-                </div>
-            </section>
-            <section id="samurai-champloo" name="samurai-champloo" class="fade-disconnect-top home_banner_area106"
-                style="height: 1000px">
-                <div style="position:relative; left:80px; top:700px; width: 356px">
-                    <div style="text-align: left"><img src="assets\anime\samurai-champloo\images\samurai-champloo-anilist-box-art.jpg"
-                            alt="" class="img-fluid image_border"></div>
-                </div>
-            </section>
-            <section class="feature_area"
-                style="padding-top:10px; padding-left:450px; padding-right:10px; height:207px; display: flex;">
-                <div style="height: 100%; padding-right: 10px;">#65 Highest Rated All Time: <strong>#94 Most Popular All
-                        Time</strong><br>Format: <strong>TV</strong><br>Episodes: <strong>26</strong><br>Episode Duration:
-                    <strong>24 mins</strong><br>Status: <strong>Finished</strong><br>Start Date: <strong>May 20,
-                        2004</strong><br>End Date: <strong>Mar 19, 2005</strong><br>Season: <strong>Spring 2004</strong><br>Mean
-                    Score: <strong>83%</strong><br>Popularity: <strong>41779</strong><br>Favorites:
-                    <strong>1839</strong><br>Source: <strong>Original</strong><br>Romaji: <strong>Samurai
-                        Champloo</strong><br>Studios: <strong>Manglobe</strong><br>Producers: <strong>Geneon Universal
-                        Entertainment</strong><br>FUNimation Entertainment: <strong>Fuji TV</strong><br>Genres:
-                    <strong>Adventure, Comedy, Action</strong><br>Swordplay: <strong>95%</strong><br>Samurai:
-                    <strong>74%</strong><br>Historical: <strong>73%</strong><br>Primarily Adult Cast:
-                    <strong>73%</strong><br>Anachronism: <strong>66%</strong><br>Rural: <strong>60%</strong><br>Martial Arts:
-                    <strong>60%</strong><br>Shounen: <strong>10%</strong><br></div>
-                <div style="text-align: center; height: 100%; width: 75%;">
-                    <h1 class="anime_name">samurai champloo</h1>
-                    <p>No bullshit super powers. Clean samurai fights. Watch the dub.</p>
-                    <div><a href="#" class="genre-btn black-border circle"><span>Adventure</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Comedy</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Action</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Swordplay</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>95%</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Samurai</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>74%</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Historical</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>73%</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Primarily Adult Cast</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>73%</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Anachronism</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>66%</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Rural</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>60%</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Martial Arts</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>60%</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Shounen</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>10%</span></a></div>
-                </div>
-            </section>
-            <section id="tokyo-ghoul" name="tokyo-ghoul" class="fade-disconnect-top home_banner_area138" style="height: 1000px">
-                <div style="position:relative; left:80px; top:700px; width: 356px">
-                    <div style="text-align: left"><img src="assets\anime\tokyo-ghoul\images\tokyo-ghoul-anilist-box-art.jpg" alt=""
-                            class="img-fluid image_border"></div>
-                </div>
-            </section>
-            <section class="feature_area"
-                style="padding-top:10px; padding-left:450px; padding-right:10px; height:207px; display: flex;">
-                <div style="height: 100%; padding-right: 10px;">#428 Highest Rated All Time: <strong>#9 Most Popular All
-                        Time</strong><br>Format: <strong>TV</strong><br>Episodes: <strong>12</strong><br>Episode Duration:
-                    <strong>24 mins</strong><br>Status: <strong>Finished</strong><br>Start Date: <strong>Jul 4,
-                        2014</strong><br>End Date: <strong>Sep 19, 2014</strong><br>Season: <strong>Summer 2014</strong><br>Mean
-                    Score: <strong>75%</strong><br>Popularity: <strong>76919</strong><br>Favorites:
-                    <strong>2471</strong><br>Source: <strong>Manga</strong><br>Romaji: <strong>Tokyo Ghoul</strong><br>English:
-                    <strong>Tokyo Ghoul</strong><br>Studios: <strong>Studio Pierrot</strong><br>Genres: <strong>Horror, Mystery,
-                        Psychological, Supernatural, Action, Drama</strong><br>Synonyms: <strong>Tokyo Kushu</strong><br>Urban
-                    Fantasy: <strong>88%</strong><br>Survival: <strong>85%</strong><br>Gore: <strong>83%</strong><br>Seinen:
-                    <strong>80%</strong><br>Male Protagonist: <strong>80%</strong><br></div>
-                <div style="text-align: center; height: 100%; width: 75%;">
-                    <h1 class="anime_name">tokyo ghoul</h1>
-                    <p>Welp, I eat ass now</p>
-                    <div><a href="#" class="genre-btn black-border circle"><span>Horror</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Mystery</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Psychological</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Supernatural</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Action</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Drama</span></a></div>
-                </div>
-            </section>
-            <section id="rezero-kara-hajimeru-isekai-seikatsu" name="rezero-kara-hajimeru-isekai-seikatsu"
-                class="fade-disconnect-top home_banner_area103" style="height: 1000px">
-                <div style="position:relative; left:80px; top:700px; width: 356px">
-                    <div style="text-align: left">
-                        <img src="assets\anime\rezero-kara-hajimeru-isekai-seikatsu\images\rezero-kara-hajimeru-isekai-seikatsu-anilist-box-art.jpg" alt="" class="img-fluid image_border">
+                    
+                    <div class="middle">
+                        <h1 class="anime-name thick-outline">${anime.name}</h1>
+                        <div class="synonyms">
+                            <span repeat.for="synonym of anime.synonyms">${synonym}.</span>
+                        </div>
+                        <p>${anime.description}</p>
+                    </div>
+                  
+                    <div class="ranking-area side">
+                        <div class="rank med-outline">
+                            #${anime.rank}
+                        </div>
+                        <div class="text thin-outline">
+                            Highest Rated All Time
+                        </div>
+                        <div class="rank med-outline">
+                            #${anime.popularity}
+                        </div>
+                        <div class="text thin-outline">
+                            Most Popular ${anime.popTime}
+                        </div>
                     </div>
                 </div>
-            </section>
-            <section class="feature_area"
-                style="padding-top:10px; padding-left:450px; padding-right:10px; height:207px; display: flex;">
-                <div style="height: 100%; padding-right: 10px;">#126 Highest Rated All Time: <strong>#15 Most Popular All
-                        Time</strong><br>Format: <strong>TV</strong><br>Episodes: <strong>25</strong><br>Episode Duration:
-                    <strong>26 mins</strong><br>Status: <strong>Finished</strong><br>Start Date: <strong>Apr 4,
-                        2016</strong><br>End Date: <strong>Sep 19, 2016</strong><br>Season: <strong>Spring 2016</strong><br>Mean
-                    Score: <strong>81%</strong><br>Popularity: <strong>70271</strong><br>Favorites:
-                    <strong>3903</strong><br>Source: <strong>Light Novel</strong><br>Romaji: <strong>Re:Zero kara Hajimeru
-                        Isekai Seikatsu</strong><br>English: <strong>Re:ZERO -Starting Life in Another
-                        World-</strong><br>Studios: <strong>White Fox</strong><br>Genres: <strong>Action, Drama, Fantasy,
-                        Psychological, Adventure</strong><br>Synonyms: <strong>Re: Life in a different world from
-                        zero</strong><br>Time Manipulation: <strong>95%</strong><br>Isekai: <strong>93%</strong><br>Male
-                    Protagonist: <strong>84%</strong><br>Alternate Universe: <strong>78%</strong><br>Magic:
-                    <strong>73%</strong><br>Anti-Hero: <strong>72%</strong><br>Gore: <strong>66%</strong><br>Love Triangle:
-                    <strong>56%</strong><br>Twins: <strong>54%</strong><br>Maids: <strong>52%</strong><br>Revenge:
-                    <strong>51%</strong><br>Nekomimi: <strong>42%</strong><br>Swordplay: <strong>36%</strong><br>Rural:
-                    <strong>34%</strong><br></div>
-                <div style="text-align: center; height: 100%; width: 75%;">
-                    <h1 class="anime_name">rezero kara hajimeru isekai seikatsu</h1>
-                    <p>Groundhog day with loli maid waifus</p>
-                    <div><a href="#" class="genre-btn black-border circle"><span>Action</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Drama</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Fantasy</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Psychological</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Adventure</span></a></div>
+                
+                <div class="genres">
+                    <span repeat.for="genre of anime.genres" class="genre">
+                        ${genre}
+                    </span>
                 </div>
             </section>
-            <section id="koe-no-katachi" name="koe-no-katachi" class="fade-disconnect-top home_banner_area66"
-                style="height: 1000px">
-                <div style="position:relative; left:80px; top:700px; width: 356px">
-                    <div style="text-align: left"><img src="assets\anime\koe-no-katachi\images\koe-no-katachi-anilist-box-art.jpg"
-                            alt="" class="img-fluid image_border"></div>
-                </div>
-            </section>
-            <section class="feature_area"
-                style="padding-top:10px; padding-left:450px; padding-right:10px; height:207px; display: flex;">
-                <div style="height: 100%; padding-right: 10px;">#2 Highest Rated All Time: <strong>#2 Most Popular All
-                        Time</strong><br>Format: <strong>Movie</strong><br>Episodes: <strong>1</strong><br>Duration: <strong>2
-                        hours, 11 mins</strong><br>Status: <strong>Finished</strong><br>Release Date: <strong>Sep 17,
-                        2016</strong><br>Season: <strong>Summer 2016</strong><br>Mean Score: <strong>89%</strong><br>Popularity:
-                    <strong>59511</strong><br>Favorites: <strong>4857</strong><br>Source: <strong>Manga</strong><br>Romaji:
-                    <strong>Koe no Katachi</strong><br>English: <strong>A Silent Voice</strong><br>Studios: <strong>Kyoto
-                        Animation</strong><br>Genres: <strong>Drama, Romance</strong><br>Synonyms: <strong>the shape of
-                        voice</strong><br>Rehabilitation: <strong>93%</strong><br>Bullying: <strong>92%</strong><br>Language
-                    Barrier: <strong>84%</strong><br>School: <strong>75%</strong><br>Male Protagonist:
-                    <strong>74%</strong><br>Coming of Age: <strong>68%</strong><br>Time Skip: <strong>58%</strong><br>Fairy
-                    Tale: <strong>50%</strong><br>Shounen: <strong>33%</strong><br>Motorcycles: <strong>32%</strong><br></div>
-                <div style="text-align: center; height: 100%; width: 75%;">
-                    <h1 class="anime_name">koe no katachi</h1>
-                    <p>Movie - life/kill yourself cause you're a bully that picks the deaf girl but then gets a boner. *Life
-                        changing</p>
-                    <div><a href="#" class="genre-btn black-border circle"><span>Drama</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Romance</span></a></div>
-                </div>
-            </section>
-            <section id="kimi-no-na-wa" name="kimi-no-na-wa" class="fade-disconnect-top home_banner_area61"
-                style="height: 1000px">
-                <div style="position:relative; left:80px; top:700px; width: 356px">
-                    <div style="text-align: left"><img src="assets\anime\kimi-no-na-wa\images\kimi-no-na-wa-anilist-box-art.jpg" alt=""
-                            class="img-fluid image_border"></div>
-                </div>
-            </section>
-            <section class="feature_area"
-                style="padding-top:10px; padding-left:450px; padding-right:10px; height:207px; display: flex;">
-                <div style="height: 100%; padding-right: 10px;">#1 Highest Rated All Time: <strong>#1 Most Popular All
-                        Time</strong><br>Format: <strong>Movie</strong><br>Episodes: <strong>1</strong><br>Duration: <strong>1
-                        hour, 47 mins</strong><br>Status: <strong>Finished</strong><br>Release Date: <strong>Aug 26,
-                        2016</strong><br>Season: <strong>Summer 2016</strong><br>Mean Score: <strong>89%</strong><br>Popularity:
-                    <strong>72661</strong><br>Favorites: <strong>5530</strong><br>Source: <strong>Original</strong><br>Romaji:
-                    <strong>Kimi no Na wa.</strong><br>English: <strong>Your Name.</strong><br>Studios: <strong>CoMix
-                        Wave</strong><br>Producers: <strong>Kadokawa Pictures Japan</strong><br>FUNimation Entertainment:
-                    <strong>NYAV Post</strong><br>Toho Company: <strong>Genres</strong><br>Romance, Drama, Supernatural:
-                    <strong>Body Swapping</strong><br>91%: <strong>Urban Fantasy</strong><br>80%: <strong>Memory
-                        Manipulation</strong><br>75%: <strong>Male Protagonist</strong><br>73%: <strong>Rural</strong><br>61%:
-                    <strong>School</strong><br>41%: <strong>Female Protagonist</strong><br>40%: </div>
-                <div style="text-align: center; height: 100%; width: 75%;">
-                    <h1 class="anime_name">kimi no na wa</h1>
-                    <p>Top anime/movie</p>
-                    <div><a href="#" class="genre-btn black-border circle"><span>Romance</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Drama</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Supernatural</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Body Swapping</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>91%</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Urban Fantasy</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>80%</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Memory Manipulation</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>75%</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Male Protagonist</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>73%</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Rural</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>61%</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>School</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>41%</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Female Protagonist</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>40%</span></a></div>
-                </div>
-            </section>
-            <section id="steinsgate" name="steinsgate" class="fade-disconnect-top home_banner_area129" style="height: 1000px">
-                <div style="position:relative; left:80px; top:700px; width: 356px">
-                    <div style="text-align: left"><img src="assets\anime\steinsgate\images\steinsgate-anilist-box-art.jpg" alt=""
-                            class="img-fluid image_border"></div>
-                </div>
-            </section>
-            <section class="feature_area"
-                style="padding-top:10px; padding-left:450px; padding-right:10px; height:207px; display: flex;">
-                <div style="height: 100%; padding-right: 10px;">#2 Highest Rated All Time: <strong>#6 Most Popular All
-                        Time</strong><br>Format: <strong>TV</strong><br>Episodes: <strong>24</strong><br>Episode Duration:
-                    <strong>24 mins</strong><br>Status: <strong>Finished</strong><br>Start Date: <strong>Apr 6,
-                        2011</strong><br>End Date: <strong>Sep 14, 2011</strong><br>Season: <strong>Spring 2011</strong><br>Mean
-                    Score: <strong>90%</strong><br>Popularity: <strong>85470</strong><br>Favorites:
-                    <strong>8676</strong><br>Source: <strong>Visual Novel</strong><br>Romaji:
-                    <strong>Steins;Gate</strong><br>English: <strong>Steins;Gate</strong><br>Studios: <strong>White
-                        Fox</strong><br>Producers: <strong>Frontier Works</strong><br>FUNimation Entertainment: <strong>Media
-                        Factory</strong><br>Movic: <strong>AT-X</strong><br>Kadokawa Pictures Japan:
-                    <strong>Nitroplus</strong><br>Genres: <strong>Psychological, Sci-Fi, Thriller, Drama</strong><br>Synonyms:
-                    <strong>s;g</strong><br>Time Manipulation: <strong>99%</strong><br>Male Protagonist:
-                    <strong>75%</strong><br>Software Development: <strong>70%</strong><br>Tsundere:
-                    <strong>66%</strong><br>Otaku Culture: <strong>64%</strong><br>Chuunibyou: <strong>64%</strong><br>Meta:
-                    <strong>51%</strong><br>Gender Bending: <strong>36%</strong><br>Miko: <strong>33%</strong><br></div>
-                <div style="text-align: center; height: 100%; width: 75%;">
-                    <h1 class="anime_name">steinsgate</h1>
-                    <p>Bioshock infinite prepare to get fucked up edition</p>
-                    <div><a href="#" class="genre-btn black-border circle"><span>Psychological</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Sci-Fi</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Thriller</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Drama</span></a></div>
-                </div>
-            </section>
-            <section id="fullmetal-alchemist-brotherhood" name="fullmetal-alchemist-brotherhood"
-                class="fade-disconnect-top home_banner_area34" style="height: 1000px">
-                <div style="position:relative; left:80px; top:700px; width: 356px">
-                    <div style="text-align: left"><img
-                            src="assets\anime\fullmetal-alchemist-brotherhood\images\fullmetal-alchemist-brotherhood-anilist-box-art.jpg"
-                            alt="" class="img-fluid image_border"></div>
-                </div>
-            </section>
-            <section class="feature_area"
-                style="padding-top:10px; padding-left:450px; padding-right:10px; height:207px; display: flex;">
-                <div style="height: 100%; padding-right: 10px;">#1 Highest Rated All Time: <strong>#5 Most Popular All
-                        Time</strong><br>Format: <strong>TV</strong><br>Episodes: <strong>64</strong><br>Episode Duration:
-                    <strong>24 mins</strong><br>Status: <strong>Finished</strong><br>Start Date: <strong>Apr 5,
-                        2009</strong><br>End Date: <strong>Jul 4, 2010</strong><br>Season: <strong>Spring 2009</strong><br>Mean
-                    Score: <strong>91%</strong><br>Popularity: <strong>85654</strong><br>Favorites:
-                    <strong>8617</strong><br>Source: <strong>Manga</strong><br>Romaji: <strong>Hagane no Renkinjutsushi:
-                        Fullmetal Alchemist</strong><br>English: <strong>Fullmetal Alchemist: Brotherhood</strong><br>Studios:
-                    <strong>BONES</strong><br>Producers: <strong>Aniplex</strong><br>Square Enix: <strong>Mainichi
-                        Broadcasting</strong><br>Genres: <strong>Action, Adventure, Drama, Fantasy, Comedy</strong><br>Synonyms:
-                    <strong>FMA</strong><br>FMAB: <strong>Hagaren</strong><br>War: <strong>92%</strong><br>Military:
-                    <strong>89%</strong><br>Magic: <strong>85%</strong><br>Shounen: <strong>78%</strong><br>Politics:
-                    <strong>75%</strong><br>Philosophy: <strong>69%</strong><br>Male Protagonist:
-                    <strong>68%</strong><br>Steampunk: <strong>67%</strong><br>Guns: <strong>50%</strong><br>Historical:
-                    <strong>50%</strong><br>Swordplay: <strong>42%</strong><br>Gore: <strong>40%</strong><br></div>
-                <div style="text-align: center; height: 100%; width: 75%;">
-                    <h1 class="anime_name">fullmetal alchemist brotherhood</h1>
-                    <p>Top classic adventure</p>
-                    <div><a href="#" class="genre-btn black-border circle"><span>Action</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Adventure</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Drama</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Fantasy</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Comedy</span></a></div>
-                </div>
-            </section>
-            <section id="mononoke-hime" name="mononoke-hime" class="fade-disconnect-top home_banner_area80"
-                style="height: 1000px">
-                <div style="position:relative; left:80px; top:700px; width: 356px">
-                    <div style="text-align: left"><img src="assets\anime\mononoke-hime\images\mononoke-hime-anilist-box-art.jpg" alt=""
-                            class="img-fluid image_border"></div>
-                </div>
-            </section>
-            <section class="feature_area"
-                style="padding-top:10px; padding-left:450px; padding-right:10px; height:207px; display: flex;">
-                <div style="height: 100%; padding-right: 10px;">#8 Highest Rated All Time: <strong>#5 Most Popular All
-                        Time</strong><br>Format: <strong>Movie</strong><br>Episodes: <strong>1</strong><br>Duration: <strong>2
-                        hours, 14 mins</strong><br>Status: <strong>Finished</strong><br>Release Date: <strong>Jul 12,
-                        1997</strong><br>Season: <strong>Summer 1997</strong><br>Mean Score: <strong>85%</strong><br>Popularity:
-                    <strong>39821</strong><br>Favorites: <strong>1401</strong><br>Source: <strong>Original</strong><br>Romaji:
-                    <strong>Mononoke-hime</strong><br>English: <strong>Princess Mononoke</strong><br>Studios: <strong>Studio
-                        Ghibli</strong><br>Producers: <strong>Tokuma Shoten</strong><br>GKids:
-                    <strong>Genres</strong><br>Action, Adventure, Fantasy, Drama: <strong>Mythology</strong><br>86%:
-                    <strong>War</strong><br>78%: <strong>Rural</strong><br>62%: <strong>Revenge</strong><br>60%:
-                    <strong>Seinen</strong><br>50%: <strong>Male Protagonist</strong><br>44%: <strong>Gore</strong><br>40%:
-                </div>
-                <div style="text-align: center; height: 100%; width: 75%;">
-                    <h1 class="anime_name">mononoke hime</h1>
-                    <p>Wolf princess saves the world with the MC as civilization</p>
-                    <div><a href="#" class="genre-btn black-border circle"><span>Action</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Adventure</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Fantasy</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Drama</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Mythology</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>86%</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>War</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>78%</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Rural</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>62%</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Revenge</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>60%</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Seinen</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>50%</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Male Protagonist</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>44%</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Gore</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>40%</span></a></div>
-                </div>
-            </section>
-            <section id="shingeki-no-kyojin" name="shingeki-no-kyojin" class="fade-disconnect-top home_banner_area116"
-                style="height: 1000px">
-                <div style="position:relative; left:80px; top:700px; width: 356px">
-                    <div style="text-align: left"><img
-                            src="assets\anime\shingeki-no-kyojin\images\shingeki-no-kyojin-anilist-box-art.jpg" alt=""
-                            class="img-fluid image_border"></div>
-                </div>
-            </section>
-            <section class="feature_area"
-                style="padding-top:10px; padding-left:450px; padding-right:10px; height:207px; display: flex;">
-                <div style="height: 100%; padding-right: 10px;">#123 Highest Rated All Time: <strong>#1 Most Popular All
-                        Time</strong><br>Format: <strong>TV</strong><br>Episodes: <strong>25</strong><br>Episode Duration:
-                    <strong>24 mins</strong><br>Status: <strong>Finished</strong><br>Start Date: <strong>Apr 7,
-                        2013</strong><br>End Date: <strong>Sep 28, 2013</strong><br>Season: <strong>Spring 2013</strong><br>Mean
-                    Score: <strong>81%</strong><br>Popularity: <strong>99845</strong><br>Favorites:
-                    <strong>4828</strong><br>Source: <strong>Manga</strong><br>Romaji: <strong>Shingeki no
-                        Kyojin</strong><br>English: <strong>Attack on Titan</strong><br>Studios: <strong>Wit
-                        Studio</strong><br>Producers: <strong>Production I.G</strong><br>FUNimation Entertainment:
-                    <strong>Mainichi Broadcasting</strong><br>Pony Canyon: <strong>Kodansha</strong><br>Shingeki no Kyojin Team:
-                    <strong>Dentsu</strong><br>Genres: <strong>Action, Drama, Fantasy, Mystery</strong><br>Synonyms:
-                    <strong>SnK</strong><br>AoT: <strong>Survival</strong><br>96%: <strong>Military</strong><br>86%:
-                    <strong>Kaiju</strong><br>85%: <strong>Post-Apocalyptic</strong><br>82%: <strong>Gore</strong><br>68%:
-                    <strong>Super Power</strong><br>63%: <strong>Male Protagonist</strong><br>58%:
-                    <strong>Steampunk</strong><br>56%: <strong>Shounen</strong><br>53%: </div>
-                <div style="text-align: center; height: 100%; width: 75%;">
-                    <h1 class="anime_name">shingeki no kyojin</h1>
-                    <p>Titans are eating our asses and I'm not into vore. Show gets fairly political and you're in the dark for
-                        a large portion of it.</p>
-                    <div><a href="#" class="genre-btn black-border circle"><span>Action</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Drama</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Fantasy</span></a><a href="#"
-                            class="genre-btn black-border circle"><span>Mystery</span></a></div>
-                </div>
-            </section>
-            <footer class="footer-area p_60">
-                <div class="container">
-                    <div class="row"></div>
-                    <div class="row footer-bottom d-flex justify-content-between align-items-center">
-                        <p class="col-lg-8 col-md-8 footer-text m-0">Made with <i class="fa fa-heart-o" aria-hidden="true"></i>
-                            by Shoyu<br>Acknowledgements<br>Loner, Jon, Kat</p>
-                    </div>
-                </div>
-            </footer>
-        </body>
+         </div>
+        <footer class="footer-area">
+            <div class="text">Made by Shoyu<br/>Acknowledgements<br/>Loner, Jon, Kat</div>
+            <div class="text"></div>
+        </footer>
     </section>
 </template>
-
-</html> -->

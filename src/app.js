@@ -1,38 +1,35 @@
+import { inject, PLATFORM } from "aurelia-framework";
+import { Router } from "aurelia-router"
 
+@inject(Router)
 export class App {
 
-	constructor() {
-    this.message = "Hello world!"
+	constructor(router) {
+		this.router = router;
+	}
+
+	navigateToRoute() {
+		this.router.navigateToRoute('level-one')
 	}
 
 	configureRouter(config, router) {
 		config.title = "Anime Anthology";
 		config.options.pushState = true;
 		config.options.root = "/";
-		// function step() {
-		// 	return step.run;
-		// }
-		// step.run = (navigationInstruction, next) => {
-		// 	this.topLogo = true;
-		// 	this.darkBackground = navigationInstruction.config.settings.skydrop;
-		// 	this.transparentAppHeader = navigationInstruction.config.settings.transparentAppHeader;
-		// 	if (navigationInstruction.config.moduleId.indexOf("pages/index") >= 0) {
-		// 		this.topLogo = false;
-		// 	}
-		// 	return next();
-		// };
-		// config.addPreActivateStep(step);
-		// config.addPipelineStep('authorize', AuthorizeStep);
 		config.map([
-			// {
-			// 	route: "level-one",
-			// 	name: "level-one",
-			// 	moduleId: PLATFORM.moduleName("pages/level-one/level-one"),
-			// 	nav: false,
-			// 	title: "Level One",
-			// }
+			{
+				route: '/',
+				name: 'home',
+				moduleId: PLATFORM.moduleName('pages/home/home'),
+				title: "Home",
+			},
+			{
+				route: 'level-one',
+				name: 'level-one',
+				moduleId: PLATFORM.moduleName('pages/level-one/level-one'),
+				title: "Level One",
+			}
 		]);
-		this.router = router;
 	}
 
 }
