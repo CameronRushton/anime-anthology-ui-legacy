@@ -4,7 +4,7 @@ export class AnimeManager {
         
     }
 
-    getLevelOneData() {
+    getData(index) {
         let allData = [
             [
                 {
@@ -9411,55 +9411,6 @@ export class AnimeManager {
                 }
             ]
         ]
-        let levelOneData = allData[0]
-        // let levelOneData = [
-        //     {
-        //         id: "hunter-x-hunter-2011",
-        //         name: "Hunter X Hunter (2011)",
-        //         boxArt: "assets/anime/hunter-x-hunter-2011/images/hunter-x-hunter-2011-anilist-box-art.jpg",
-        //         background: "assets/anime/hunter-x-hunter-2011/images/hunter-x-hunter-2011-anilist-cover.jpg",
-        //         rank: "3",
-        //         popularity: "25",
-        //         format: "TV",
-        //         startDate: "Oct 2, 2011",
-        //         endDate: "Sep 24, 2014",
-        //         status: "Finished",
-        //         episodeDuration: "23 mins",
-        //         episodes: "148",
-        //         season: "Fall 2011",
-        //         score: "90",
-        //         source: "manga",
-        //         studios: ["MADHOUSE"],
-        //         producers: ["VAP"],
-        //         synonyms: ["HxH (2011)"],
-        //         genres: ["Action", "Adventure", "Fantasy", "Fantasy", "Fantasy", "Fantasy", "Fantasy", "Fantasy", "Fantasy", "Fantasy", "Fantasy", "Fantasy", "Fantasy"],
-        //         customTags: [{name: "Cultivation", percent: "91"}, {name: "Shounen", percent: "90"}, {name: "Super Power", percent: "90"}, {name: "Male Protagonist", percent: "83"}, {name: "Primarily Male Cast", percent: "77"}, {name: "Coming of Age", percent: "75"}, {name: "Foreign", percent: "59"}, {name: "Assassins", percent: "58"}, {name: "Revenge", percent: "53"}, {name: "Gangs", percent: "48"}],
-        //         description: "This anime is good. This anime is good.This anime is good. This anime is good. This anime is good. This anime is good. This anime is good. This anime is good. This anime is good. This anime is good. This anime is good. This anime is good. This anime is good. This anime is good. This anime is good. This anime is good. This anime is good. This anime is good. This anime is good. This anime is good. This anime is good. This anime is good. This anime is good. This anime is good. "
-        //     },
-        //     {
-        //         id: "violet-evergarden",
-        //         name: "Violet Evergarden",
-        //         boxArt: "assets/anime/violet-evergarden/images/violet-evergarden-anilist-box-art.jpg",
-        //         background: "assets/anime/violet-evergarden/images/violet-evergarden-anilist-cover.jpg",
-        //         rank: "120",
-        //         popularity: "300",
-        //         format: "TV",
-        //         startDate: "Oct 2, 2011",
-        //         endDate: "Sep 24, 2014",
-        //         status: "Finished",
-        //         episodeDuration: "23 mins",
-        //         episodes: "12",
-        //         season: "Fall 2011",
-        //         score: "30",
-        //         source: "manga",
-        //         studios: ["MADHOUSE", "Shoyu"],
-        //         producers: ["VAP", "Producer2"],
-        //         synonyms: ["The beautiful anime", "The good one"],
-        //         genres: ["Fantasy", "Fantasy", "Fantasy", "Fantasy"],
-        //         customTags: [{name: "Cultivation", percent: "91"}, {name: "Shounen", percent: "90"}, {name: "Super Power", percent: "90"}, {name: "Male Protagonist", percent: "83"}, {name: "Primarily Male Cast", percent: "77"}, {name: "Coming of Age", percent: "75"}, {name: "Foreign", percent: "59"}, {name: "Assassins", percent: "58"}, {name: "Revenge", percent: "53"}, {name: "Gangs", percent: "48"}],
-        //         description: "This anime is good. "
-        //     }
-        // ]
-        return levelOneData;
+        return allData[index];
     }
 }

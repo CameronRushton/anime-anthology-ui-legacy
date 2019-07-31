@@ -1,5 +1,6 @@
 import { inject, PLATFORM } from "aurelia-framework";
 import { Router } from "aurelia-router"
+import {activationStrategy} from 'aurelia-router';
 
 @inject(Router)
 export class App {
@@ -25,9 +26,33 @@ export class App {
 			},
 			{
 				route: 'level-one',
-				name: 'level-one',
-				moduleId: PLATFORM.moduleName('pages/level-one/level-one'),
+				moduleId: PLATFORM.moduleName('pages/level/level'),
+				activationStrategy: activationStrategy.replace,
 				title: "Level One",
+			},
+			{
+				route: 'level-two',
+				moduleId: PLATFORM.moduleName('pages/level/level'),
+				activationStrategy: activationStrategy.replace,
+				title: "Level Two",
+			},
+			{
+				route: 'level-three',
+				moduleId: PLATFORM.moduleName('pages/level/level'),
+				activationStrategy: activationStrategy.replace,
+				title: "Level Three",
+			},
+			{
+				route: 'level-four',
+				moduleId: PLATFORM.moduleName('pages/level/level'),
+				activationStrategy: activationStrategy.replace,
+				title: "Level Four",
+			},
+			{
+				route: 'level-five',
+				moduleId: PLATFORM.moduleName('pages/level/level'),
+				activationStrategy: activationStrategy.replace,
+				title: "Level Five",
 			}
 		]);
 	}
