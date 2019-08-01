@@ -70,17 +70,17 @@
                         <p>${anime.description}</p>
                     </div>
                   
-                    <div class="ranking-area side">
-                        <div class="rank med-outline">
+                    <div class="ranking-area side" >
+                        <div class="rank med-outline" if.bind="anime.rank">
                             #${anime.rank}
                         </div>
-                        <div class="text thin-outline">
+                        <div class="text thin-outline" if.bind="anime.rank">
                             Highest Rated All Time
                         </div>
-                        <div class="rank med-outline">
+                        <div class="rank med-outline" if.bind="anime.popularity">
                             #${anime.popularity}
                         </div>
-                        <div class="text thin-outline">
+                        <div class="text thin-outline" if.bind="anime.popularity">
                             Most Popular ${anime.popTime}
                         </div>
                     </div>
