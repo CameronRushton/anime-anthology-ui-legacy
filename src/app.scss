@@ -21,6 +21,8 @@ $background-border: #252525;
   color: $red;
 }
 
+// Basic header at top of screen
+
 .header1 {
   background: $background-border;
   position: fixed;
@@ -74,6 +76,84 @@ $background-border: #252525;
   }
 }
 
+// header for mobile devices
+@media screen and (max-width: 600px) {
+  .header1 {
+    background: $green;
+    position: fixed;
+    width: 100%;
+    height: 80px;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    overflow: hidden;
+    justify-content: space-around;
+    padding-top: 5px;
+    transition: height 0.5s ease-out 0ms,
+      width 0.5s ease-out 0.5s,
+      top 0.5s ease-out 0ms,
+      left 0.5s ease-out 0ms;
+    .title {
+      font-family: inherit;
+      font-size: x-large;
+      font-weight: 600;
+      color: $title-color;
+      transition: opacity 0.3s ease-out 1.0s;
+      display: flex;
+      align-items: center;
+      .logo {
+        width: 70px;
+        height: 70px;
+      }
+    }
+    .navigation {
+      display: flex;
+      align-items: center;
+      transition: opacity 0.3s ease-out 1.0s;
+      img {
+        width: 50px;
+        height: 50px;
+        margin: 0px 20px;
+      }
+      .item {
+        display: flex;
+        height: fit-content;
+        cursor: pointer;
+        margin-right: 20px;
+        font-size: 20px;
+        color: $subtitle-color;
+        &.active {
+          border-bottom: 2px solid $green;
+        }
+      }
+      .item:hover {
+        color: $text-color;
+      }
+    }
+    &.fixed {
+      position: fixed;
+      z-index: 5;
+    }
+  }
+}
+.mobile-nav-options {
+  top: 80px;
+  position: fixed;
+  background-color: $background-border;
+  width: 100%;
+  text-align: center;
+  .mobile-nav-item {
+    cursor: pointer;
+    border-bottom: 1px solid black;
+    a {
+      color: $subtitle-color;
+      
+    }
+  }
+}
+
+// Header on side of screen
+
 .header2 {
   background: $background-border;
   position: fixed;
@@ -112,6 +192,7 @@ $background-border: #252525;
     }
   }
 }
+
 .opacity0 {
   opacity: 0;
   width: 0px;

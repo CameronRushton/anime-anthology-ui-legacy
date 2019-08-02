@@ -4,14 +4,23 @@
             <img src="/assets/images/logo.png" alt="" class="logo">
             Shoyu's Anime Anthology
         </div>
-        <div class="navigation ${scrollPosition > 90? 'opacity0':'opacity1'}">
+        <div if.bind="screenWidth > 600" class="navigation ${scrollPosition > 90? 'opacity0':'opacity1'}">
             <a repeat.for="route of router.routes" class="item ${route.navModel.isActive? 'active':''} " href.bind="route.route">${route.title}</a>
         </div>
+        <div else class="navigation ${scrollPosition > 90? 'opacity0':'opacity1'}">
+            <img click.trigger="showNavOptions = !showNavOptions" src="/assets/images/mobile-hamburger.png"/>
+        </div>
+        
         <div class="navigation2 ${scrollPosition > 90? 'opacity1':'opacity0 no-display'}">
             <a class="item" click.delegate="scrollToTop()" style="font-family: monospace; font-size: 30px; cursor: pointer;">^</a>
             <a repeat.for="route of router.routes" class="item ${route.navModel.isActive? 'active':''} " href.bind="route.route">${route.char}</a>
         </div>
     </nav>
+    <div show.bind="showNavOptions && scrollPosition < 90 && screenWidth < 600" class="mobile-nav-options">
+      <div repeat.for="route of router.routes" class="mobile-nav-item">
+        <a class="item ${route.navModel.isActive? 'active':''} " href.bind="route.route">${route.title}</a>
+      </div>
+    </div>
     <section class="screenshot_area" style="padding-top: 120px; padding-bottom: 20px;">
       <div class="container">
         <div class="main_title">

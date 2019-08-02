@@ -12,6 +12,8 @@ export class Home {
                 route.char = index;
             }
         })
+        this.screenWidth = screen.width;
+        this.showNavOptions = false;
     }
 
     attached() {
@@ -24,6 +26,9 @@ export class Home {
 
     handleScrollEvent(event) {
         this.scrollPosition = event.currentTarget.scrollY;
+        if (this.scrollPosition > 90) {
+            this.showNavOptions = false;
+        }
     }
 
 }
