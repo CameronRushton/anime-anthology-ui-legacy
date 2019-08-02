@@ -1,19 +1,6 @@
 <template>
     <section>
         <header></header>
-        <!-- <nav class="${scrollPosition > 90? 'header2':'header1'}">
-            <div class="title ${scrollPosition > 90? 'opacity0':'opacity1'}">
-                <img src="/assets/images/logo.png" alt="" class="logo ${scrollPosition > 90? 'opacity0':''}">
-                Shoyu's Anime Anthology
-            </div>
-            <div class="navigation ${scrollPosition > 90? 'opacity0':'opacity1'}">
-                <a repeat.for="route of router.routes" class="item ${route.navModel.isActive? 'active':''} ${scrollPosition > 90? 'opacity0':''}" href.bind="route.route">${route.title}</a>
-            </div>
-            <div class="navigation2 ${scrollPosition > 90? 'opacity1':'opacity0 no-display'}">
-                <a class="item angle-arrow ${scrollPosition > 90? 'opacity1':'opacity0 no-display'}" click.delegate="scrollToTop()">^</a>
-                <a repeat.for="route of router.routes" class="item ${route.navModel.isActive? 'active':''} ${scrollPosition > 90? 'opacity1':'opacity0 no-display'}" href.bind="route.route">${route.char}</a>
-            </div>
-        </nav> -->
         <div class="main-title">
             <h2 class="med-outline">${level.name}</h2>
             <p>${level.description}
