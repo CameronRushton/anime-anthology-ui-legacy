@@ -7,13 +7,6 @@ export class Level {
 
 	constructor(router, animeManager) {
         this.router = router;
-        this.router.routes.forEach((route, index) => {
-            if (route.name === "home") {
-                route.char = "H";
-            } else {
-                route.char = index;
-            }
-        })
         this.animeManager = animeManager;
     }
 
@@ -49,22 +42,6 @@ export class Level {
                 anime.scoreColour = "red";
             }
         });
-
-        window.addEventListener("scroll", event => this.handleScrollEvent(event));
-    }
-
-    detached() {
-        window.removeEventListener("scroll", event => this.handleScrollEvent(event))
-    }
-
-    handleScrollEvent(event) {
-        this.scrollPosition = event.currentTarget.scrollY;
-    }
-
-    scrollToTop() {
-        document.getElementById("top").scrollIntoView({ 
-            behavior: 'smooth'
-          });
     }
 
     pickData() {
