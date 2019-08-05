@@ -8,6 +8,8 @@ export class Level {
 	constructor(router, animeManager) {
         this.router = router;
         this.animeManager = animeManager;
+        this.screenWidth = screen.width;
+        let windowHeight = screen.height;
     }
 
 	attached() {
