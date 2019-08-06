@@ -7,7 +7,8 @@ $subtitle-color: honeydew;
 $text-color: #999;
 $background-color: #303030;
 $background-border: #252525;
-
+// TODO: Check me for duplicate styles being applied for different screen sizes.
+// Example: If default is already display: flex, @media(max-width) doesnt need to override with another display: flex.
 .main-title {
     text-align: center;
     background: $background-color;
@@ -37,23 +38,19 @@ $background-border: #252525;
     z-index: 0;
     background-position: 50%;
     height: 1000px;
+    display: flex;
+    align-items: flex-end;
+    border-bottom: thick solid #252525;
+
 }
 
 .details-container {
-    background-color: $background-color;
-    border-top: solid;
-    border-right: solid;
-    border-left: solid;
-    border-color: $background-border;
-    border-width: thick;
-    display: inline-flex;
-    max-height: 200px;
+    display: flex;
+    width: 100%;
     .box-art-area {
         position: relative;
-        z-index: 1;
-        top: -330px;
-        height: fit-content;
         padding: 0px 10px 0px 80px;
+        margin-top: auto;
         .percent-upvoted {
             font-family: fantasy;
             font-size: 6rem;
@@ -66,6 +63,7 @@ $background-border: #252525;
             text-align: left;
             .box-art {
                 border: solid;
+                border-bottom: none;
                 border-color: black;
                 position: relative;
                 z-index: 1;
@@ -74,98 +72,117 @@ $background-border: #252525;
             }
         }
         .studio {
-            text-align: center;
             font-size: 2rem;
             font-family: sans-serif;
             color: $subtitle-color;
-            padding-bottom: 5px;
-            padding-top: 5px;
+            position: absolute;
+            bottom: 10px;
+            z-index: 1;
+            padding-left: 10px;
         }
     }
-    .main-details {
+    .details {
+        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
         display: flex;
-        .side {
-            min-width: 350px;
+        align-items: flex-end;
+        width: 100%;
+        .bottom-details-container{
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 30px;
+            width: 100%;
+            .main-details {
+                display: flex;
+                color: honeydew;
+                .side {
+                    padding: 10px;
+                    max-width: 250px;
+                    .data-item {
+                        white-space: nowrap;
+                    }
+                }
+                .middle {
+                    text-align: center;
+                    width: 100%;
+                    .anime-name {
+                        font-family: sans-serif;
+                        color: $title-color;
+                        margin-bottom: 0px;
+                    }
+                    .synonyms {
+                        padding-bottom: 10px;
+                    }
+                }
+                .ranking-area {
+                    text-align: center;
+                    justify-content: center;
+                    flex-direction: column;
+                    display: flex;
+                    padding: 10px 20px;
+                    .rank-pair {
+                        .rank {
+                            font-family: fantasy;
+                            font-size: 3rem;
+                            color: $yellow;
+                            margin-top: 20px;
+                        }
+                        .text {
+                            color: $subtitle-color;
+                            padding-top: 15px;
+                            font-family: sans-serif;
+                            font-size: medium;
+                            font-weight: 700;
+                        }
+                        .text:last-child {
+                            margin-bottom: auto;
+                        }
+                    }
+                }  
+            }
         }
-        .middle {
-            text-align: center;
-            min-width: 730px;
-            .anime-name {
-                font-family: sans-serif;
-                color: $title-color;
-                margin-bottom: 0px;
-            }
-            .synonyms {
-                padding-bottom: 10px;
-            }
-        }
-        .ranking-area {
-            text-align: center;
-            justify-content: center;
-            flex-direction: column;
-            display: flex;
-            .rank {
-                font-family: fantasy;
-                font-size: 3rem;
-                color: $yellow;
-                margin-top: auto;
-            }
-            .text {
-                color: $subtitle-color;
-                padding-top: 15px;
-                font-family: sans-serif;
-                font-size: medium;
-                font-weight: 700;
-            }
-            .text:last-child {
-                margin-bottom: auto;
-            }
-        }  
     }
-    .genres {
+}
+.genres {
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    .genre {
+        display: inline-block;
+        margin-right: 10px;
+        outline: none;
+        line-height: 40px;
+        padding: 0 15px;
+        font-size: 1em;
         text-align: center;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        width: 1430px;
-        .genre {
-            display: inline-block;
-            margin-right: 10px;
-            outline: none;
-            line-height: 40px;
-            padding: 0 15px;
-            font-size: 1em;
-            text-align: center;
-            text-decoration: none;
-            font-weight: 500;
-            cursor: pointer;
-            border: 1px solid $text-color;
-            border-radius: 20px;
-            color: $subtitle-color;
-        }
-        .genre:first-child {
-            margin-left: 10px;
-        }
-        .genre:last-child {
-            margin-right: 0px;
-        }
+        text-decoration: none;
+        font-weight: 500;
+        border: 1px solid $text-color;
+        border-radius: 20px;
+        color: $subtitle-color;
+    }
+    .genre:first-child {
+        margin-left: 10px;
+    }
+    .genre:last-child {
+        margin-right: 0px;
     }
 }
 .extra-info-area {
     position: absolute;
     display: flex;
-    top: 200px;
-    left: 355px;
+    width: auto;
+    bottom: 260px;
+    left: 430px;
     z-index: 1;
     .extra-info {
-        background: $background-color;
+        background: rgba(0,0,0,0.7);
         transition: width 0.4s ease-out 0ms;
         height: 100px;
         overflow: hidden;
-        border-radius: 0px 5px;
+        border-radius: 0px 5px 5px 0px;
         cursor: pointer;
         display: flex;
         .static-info-container {
-            min-width: 1400px;
+            width: 100%;
             display: flex;
             flex-wrap: wrap;
             .tag {
@@ -193,12 +210,12 @@ $background-border: #252525;
         }
     }
     .w1400 {
-        width: 1400px;
+        width: 100%;
     }
     .angle-icon {
         cursor: pointer;
         align-self: center;
-        background: $background-color;
+        background: rgba(0, 0, 0, 0.7);
         font-size: 2rem;
         font-weight: bold;
         font-family: monospace;
@@ -209,181 +226,78 @@ $background-border: #252525;
 
 
 @media (max-width: 1400px) {
-    // .details-container:before {
-    //     content: '';
-    //     position: absolute;
-    //     left: 0; 
-    //     right: 0;
-    //     bottom: 0;
-    //     background: linear-gradient(to top, rgba(255, 255, 255, 0), $background-color 100%);
-    //     opacity: 1;
-    // }
     .details-container {
-        background-color: red;
-        content: '';
-        position: absolute;
-        left: 0; 
-        right: 0;
-        bottom: 0;
-        background: unset;
-        //background: linear-gradient(to top, rgba(255, 255, 255, 0), $background-color 100%);
-        opacity: 1;
-        border-bottom: thick solid #252525;
-        //position: relative;
         width: 100%;
-        border-top: none;
-        border-right: none;
-        border-left: none;
-        border-color: $background-border;
-        // border-width: thick;
-        display: inline-flex;
-        max-height: 200px;
         .box-art-area {
-            position: relative;
-            z-index: 1;
-            top: -330px;
-            height: fit-content;
-            padding: 0px 10px 0px 80px;
             .studio {
                 display: none;
-                text-align: center;
-                font-size: 2rem;
-                font-family: sans-serif;
-                color: $subtitle-color;
-                padding-bottom: 5px;
-                padding-top: 5px;
             }
         }
-        .main-details {
-            display: flex;
-            color: white;
+        .details {
             text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-            background-color: rgba(0,0,0,0.4);
-            border-radius: 30px;
-            .side {
-                min-width: auto;
-                display: none;
-            }
-            .middle {
-                text-align: center;
-                min-width: auto;
-                .anime-name {
-                    font-family: sans-serif;
-                    color: $title-color;
-                    margin-bottom: 0px;
-                }
-                .synonyms {
-                    padding-bottom: 10px;
-                }
-            }
-            .ranking-area {
-                text-align: center;
-                justify-content: center;
-                flex-direction: column;
-                display: flex;
-                .rank {
-                    font-family: fantasy;
-                    font-size: 3rem;
-                    color: $yellow;
-                    margin-top: auto;
-                }
-                .text {
-                    color: $subtitle-color;
-                    padding-top: 15px;
-                    font-family: sans-serif;
-                    font-size: medium;
-                    font-weight: 700;
-                }
-                .text:last-child {
-                    margin-bottom: auto;
-                }
-            }  
-        }
-        .genres {
-            text-align: center;
-            padding-top: 10px;
-            padding-bottom: 10px;
-            width: auto;
-        }
-    }
-    .extra-info-area {
-        display: none;
-    }
-}
-
-@media (max-width: 1000px) {
-    .details-container {
-        background-color: orange;
-        border-top: solid;
-        border-right: solid;
-        border-left: solid;
-        border-color: $background-border;
-        border-width: thick;
-        display: inline-flex;
-        max-height: 200px;
-        .box-art-area {
-            position: relative;
-            z-index: 1;
-            top: -330px;
-            height: fit-content;
-            padding: 0px 10px 0px 80px;
-            .studio {
-                display: none;
-                text-align: center;
-                font-size: 2rem;
-                font-family: sans-serif;
-                color: $subtitle-color;
-                padding-bottom: 5px;
-                padding-top: 5px;
-            }
-        }
-        .main-details {
             display: flex;
-            .side {
-                min-width: auto;
-                display: none;
+            align-items: flex-end;
+            width: 100%;
+            .bottom-details-container{
+                background: rgba(0, 0, 0, 0.7);
+                border-radius: 30px;
+                width: 100%;
+            
+                .main-details {
+                    flex-direction: column;
+                    color: white;
+                    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+                    .side {
+                        min-width: auto;
+                        display: none;
+                    }
+                    .middle {
+                        text-align: center;
+                        min-width: auto;
+                        .anime-name {
+                            font-family: sans-serif;
+                            color: $title-color;
+                            margin-bottom: 0px;
+                        }
+                        .synonyms {
+                            padding-bottom: 10px;
+                        }
+                    }
+                    .ranking-area {
+                        display: flex;
+                        position: absolute;
+                        left: 90px;
+                        bottom: 0px;
+                        z-index: 1;
+                        
+                        .rank-pair {
+                            display: flex;
+                            justify-content: space-evenly;
+                            align-items: center;
+                            background: rgba(0,0,0,0.7);
+                            border-radius: 5px;
+                            margin-bottom: 5px;
+                            .rank {
+                                margin-top: 0px;
+                            }
+                            .text {
+                                padding-top: 0px;
+                                max-width: 120px;
+                            }
+                            .text:last-child {
+                                margin-bottom: auto;
+                            }
+                        }
+                    }  
+                }
             }
-            .middle {
-                text-align: center;
-                min-width: auto;
-                .anime-name {
-                    font-family: sans-serif;
-                    color: $title-color;
-                    margin-bottom: 0px;
-                }
-                .synonyms {
-                    padding-bottom: 10px;
-                }
-            }
-            .ranking-area {
-                text-align: center;
-                justify-content: center;
-                flex-direction: column;
-                display: flex;
-                .rank {
-                    font-family: fantasy;
-                    font-size: 3rem;
-                    color: $yellow;
-                    margin-top: auto;
-                }
-                .text {
-                    color: $subtitle-color;
-                    padding-top: 15px;
-                    font-family: sans-serif;
-                    font-size: medium;
-                    font-weight: 700;
-                }
-                .text:last-child {
-                    margin-bottom: auto;
-                }
-            }  
         }
-        .genres {
-            text-align: center;
-            padding-top: 10px;
-            padding-bottom: 10px;
-            width: auto;
-        }
+    }
+    .genres {
+        text-align: center;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        width: auto;
     }
     .extra-info-area {
         display: none;
@@ -401,45 +315,170 @@ $background-border: #252525;
         border-radius: 30px;
     }
     .details-container {
-        display: none;
+        width: 100%;
         .box-art-area {
             display: none;
+            position: relative;
+            padding: 0px 10px 0px 80px;
+            margin-top: auto;
+            .percent-upvoted {
+                font-family: fantasy;
+                font-size: 6rem;
+                transform: rotate(20deg);
+                position: absolute;
+                z-index: 2;
+                right: -60px;
+            }
+            .box-art-container {
+                text-align: left;
+                .box-art {
+                    border: solid;
+                    border-bottom: none;
+                    border-color: black;
+                    position: relative;
+                    z-index: 1;
+                    box-shadow: -3px 3px 20px 0px black;
+                    width: 350px;
+                }
+            }
             .studio {
-                display: none;
+                font-size: 2rem;
+                font-family: sans-serif;
+                color: $subtitle-color;
+                position: absolute;
+                bottom: 10px;
+                z-index: 1;
+                padding-left: 10px;
             }
         }
-        .main-details {
-            display: none;
-            .side {
-                display: none;
+        .details {
+            text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+            display: flex;
+            align-items: flex-end;
+            width: 100%;
+            .bottom-details-container{
+                background: none;
+                border-radius: 30px;
+                width: 100%;
+            
+                .main-details {
+                    flex-direction: column;
+                    color: white;
+                    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+                    .side {
+                        min-width: auto;
+                        display: none;
+                    }
+                    .middle {
+                        text-align: center;
+                        min-width: auto;
+                        .anime-name {
+                            font-family: sans-serif;
+                            color: $title-color;
+                            margin-bottom: 0px;
+                            font-size: 15px;
+                            text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+                            text-align: right;
+                            padding-right: 20px;
+                        }
+                        .synonyms {
+                            display: none;
+                            padding-bottom: 10px;
+                        }
+                        p {
+                            display: none;
+                        }
+                    }
+                    .ranking-area {
+                        display: none;
+                        position: absolute;
+                        left: 90px;
+                        bottom: 0px;
+                        z-index: 1;
+                        
+                        .rank-pair {
+                            display: flex;
+                            justify-content: space-evenly;
+                            align-items: center;
+                            background: rgba(0,0,0,0.7);
+                            border-radius: 5px;
+                            margin-bottom: 5px;
+                            .rank {
+                                margin-top: 0px;
+                            }
+                            .text {
+                                padding-top: 0px;
+                                max-width: 120px;
+                            }
+                            .text:last-child {
+                                margin-bottom: auto;
+                            }
+                        }
+                    }  
+                }
             }
-            .middle {
-                text-align: center;
-                min-width: auto;
-                .anime-name {
-                    font-family: sans-serif;
-                    color: $title-color;
-                    margin-bottom: 0px;
-                }
-                .synonyms {
-                    display: none;
-                }
-            }
-            .ranking-area {
-                display: none;
-                .rank {
-                    display: none;
-                }
-                .text {
-                    display: none;
-                }
-            }  
         }
-        .genres {
-            display: none;
-        }
+    }
+    .genres {
+        display: none;
     }
     .extra-info-area {
         display: none;
     }
+    .mobile-details {
+        // transition: max-height 1s ease-out 0s;
+        margin: 0px 30px;
+        .box-art-mobile {
+            box-shadow: -3px 3px 20px 0px black;
+            width: 100px;
+            opacity: 0.8;
+            max-height: 150px;
+        }
+        .side {
+            padding-left: 10px;
+        }
+        .genres-mobile {
+            text-align: left;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            display: grid;
+            grid-template-columns: auto auto auto;
+            grid-row-gap: 5px;
+            grid-auto-flow: row;
+            .genre {
+                margin-right: 10px;
+                outline: none;
+                padding: 0 15px;
+                text-align: center;
+                text-decoration: none;
+                border: 1px solid $text-color;
+                border-radius: 10px;
+                color: $subtitle-color;
+            }
+        }
+        .ranks-mobile {
+            display: flex;
+            .rank-pair-mobile {
+                padding-right: 5px;
+                text-align: center;
+                width: 50%;
+                .rank-mobile {
+                    font-family: fantasy;
+                    font-size: 40px;
+                    color: $yellow;
+                }
+                .rank-text-mobile {
+                    font-weight: 600;
+                    padding: 5px 0px;
+                }
+            }
+        }
+    }
+    .h0 {
+        max-height: 0px;
+    }
+    .h-max {
+        max-height: 1000px;
+    }
+    
 }
