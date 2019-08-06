@@ -92,7 +92,7 @@
                     <div>
                         <img src.bind="anime.boxArt" alt="" class="box-art-mobile">
                         <div style="max-width: 100px;">
-                            <span repeat.for="synonym of anime.synonyms" if.bind="synonym">(${synonym})</span>
+                            <span if.bind="anime.synonyms[0]">${anime.synonyms[0]}</span>
                         </div>
                     </div>
                     <div class="side">
@@ -103,7 +103,12 @@
                         <div if.bind="anime.episodeDuration">Episodes: <strong>${anime.episodes} </strong>x <strong>${anime.episodeDuration} </strong>= <strong>${anime.totalDuration} ${anime.totalDurationUnits}</strong></div>
                         <div if.bind="anime.duration">Duration: <strong>${anime.duration}</strong></div>
                         <div>Season: <strong>${anime.season}</strong></div>
-                        <div if.bind="anime.producers.length > 0">Producers: <strong repeat.for="producer of anime.producers">${producer} </strong></div>
+                        <div class="studio">
+                            Studio${anime.studios.length > 1? 's':''}:
+                            <span repeat.for="studio of anime.studios">
+                                <strong>${studio}</strong>
+                            </span>
+                        </div>
                     </div>
                 </div>
                 <div class="genres-mobile">
