@@ -1,98 +1,144 @@
 <template>
     <section>
-        <nav class="${scrollPosition > 90? 'header2':'header1'}">
-            <div class="title ${scrollPosition > 90? 'opacity0':'opacity1'}">
-                <img src="/assets/images/logo.png" alt="" class="logo ${scrollPosition > 90? 'opacity0':''}">
-                Shoyu's Anime Anthology
-            </div>
-            <div class="navigation ${scrollPosition > 90? 'opacity0':'opacity1'}">
-                <a repeat.for="route of router.routes" class="item ${route.navModel.isActive? 'active':''} ${scrollPosition > 90? 'opacity0':''}" href.bind="route.route">${route.title}</a>
-            </div>
-            <div class="navigation2 ${scrollPosition > 90? 'opacity1':'opacity0 no-display'}">
-                <a class="item angle-arrow ${scrollPosition > 90? 'opacity1':'opacity0 no-display'}" click.delegate="scrollToTop()">^</a>
-                <a repeat.for="route of router.routes" class="item ${route.navModel.isActive? 'active':''} ${scrollPosition > 90? 'opacity1':'opacity0 no-display'}" href.bind="route.route">${route.char}</a>
-            </div>
-        </nav>
-        <div id="top" class="main-title">
+        <header></header>
+        <div class="main-title">
             <h2 class="med-outline">${level.name}</h2>
-            <p>${level.description}
-            </p>
+            <p>${level.description}</p>
         </div>
         <div repeat.for="anime of animeData">
-            <section id="anime.name" css="background-image: -webkit-linear-gradient(left, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.9) 100%), url(${anime.background});" class="background-image">
-                <div class="box-art-area">
-                    <p class="percent-upvoted thin-outline ${anime.scoreColour}">${anime.score}%</p>
-
-                    <div class="extra-info-area">
-                        <div class="extra-info ${anime.toggleExtraInfo ? 'w1400':'w0'}" click.trigger="anime.toggleExtraInfo = !anime.toggleExtraInfo">
-                            <div class="static-info-container">
-                                <div repeat.for="tag of anime.customTags" class="tag">
-                                    <div class="name">${tag.name}</div>
-                                    <div class="progress-bar">
-                                        <div class="progress" css="width: ${tag.percent}px;"></div>
+            <div id="anime.name"
+                css="background-image: -webkit-linear-gradient(left, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.9) 100%), url(${anime.background});"
+                class="background-image"
+                click.trigger="toggleMobileDetails = !toggleMobileDetails">
+                <div class="details-container">
+                    <div class="box-art-area">
+                        <p class="percent-upvoted thin-outline ${anime.scoreColour}">${anime.score}%</p>
+                        <div class="box-art-container">
+                            <img src.bind="anime.boxArt" alt="" class="box-art">
+                        </div>
+                        
+                        <div class="studio thick-outline">
+                            <span repeat.for="studio of anime.studios">
+                                <strong>${studio}</strong>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="details">
+                            <div class="extra-info-area">
+                                    <div class="extra-info ${anime.toggleExtraInfo ? 'w1400':'w0'}" click.trigger="anime.toggleExtraInfo = !anime.toggleExtraInfo">
+                                        <div class="static-info-container">
+                                            <div repeat.for="tag of anime.customTags" class="tag">
+                                                <div class="name">${tag.name}</div>
+                                                <div class="progress-bar">
+                                                    <div class="progress" css="width: ${tag.percent}px;"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a click.trigger="anime.toggleExtraInfo = !anime.toggleExtraInfo" class="angle-icon">></a>
+                                </div>
+                        <div class="bottom-details-container">
+                            <div class="main-details">
+                                <div class="side">
+                                    <div class="data-item">Format: <strong>${anime.format}</strong></div>
+                                    <div class="data-item" if.bind="anime.startDate && anime.endDate">Start Date: <strong>${anime.startDate}</strong> End Date: <strong>${anime.endDate}</strong></div>
+                                    <div class="data-item" if.bind="anime.releaseDate">Release Date: <strong>${anime.releaseDate}</strong></div>
+                                    <div class="data-item">Status: <strong>${anime.status}</strong></div>
+                                    <div class="data-item" if.bind="anime.episodeDuration">Episodes: <strong>${anime.episodes} </strong>x <strong>${anime.episodeDuration} </strong>= <strong>${anime.totalDuration} ${anime.totalDurationUnits}</strong></div>
+                                    <div class="data-item" if.bind="anime.duration">Duration: <strong>${anime.duration}</strong></div>
+                                    <div class="data-item">Season: <strong>${anime.season}</strong></div>
+                                    <div if.bind="anime.producers.length > 0">Producers: <strong repeat.for="producer of anime.producers">${producer} </strong></div>
+                                </div>
+                                
+                                <div class="middle">
+                                    <h1 class="anime-name thick-outline">${anime.name}</h1>
+                                    <div class="synonyms">
+                                        <span repeat.for="synonym of anime.synonyms">${synonym}.</span>
+                                    </div>
+                                    <p>${anime.description}</p>
+                                    <div class="genres">
+                                        <span repeat.for="genre of anime.genres" class="genre">
+                                            ${genre}
+                                        </span>
+                                    </div>
+                                </div>
+                            
+                                <div class="ranking-area">
+                                    <div class="rank-pair">
+                                        <div class="rank med-outline" if.bind="anime.rank">
+                                            #${anime.rank}
+                                        </div>
+                                        <div class="text thin-outline" if.bind="anime.rank">
+                                            Highest Rated All Time
+                                        </div>
+                                    </div>
+                                    <div class="rank-pair">
+                                        <div class="rank med-outline" if.bind="anime.popularity">
+                                            #${anime.popularity}
+                                        </div>
+                                        <div class="text thin-outline" if.bind="anime.popularity">
+                                            Most Popular ${anime.popTime}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            
                         </div>
-                        <a click.trigger="anime.toggleExtraInfo = !anime.toggleExtraInfo" class="angle-icon">></a>
-                    </div>
-
-                    <div class="box-art-container">
-                        <img src.bind="anime.boxArt" alt="" class="img-fluid box-art">
-                    </div>
-                    
-                    <div class="studio thick-outline">
-                        <span repeat.for="studio of anime.studios">
-                            <strong>${studio}</strong>
-                        </span>
                     </div>
                 </div>
-            </section>
-            
-            <section class="details-container">
-                <div class="main-details">
-                    <div class="side">
-                        <div class="data-item">Format: <strong>${anime.format}</strong></div>
-                        <div class="data-item" if.bind="anime.startDate && anime.endDate">Start Date: <strong>${anime.startDate}</strong> End Date: <strong>${anime.endDate}</strong></div>
-                        <div class="data-item" if.bind="anime.releaseDate">Release Date: <strong>${anime.releaseDate}</strong></div>
-                        <div class="data-item">Status: <strong>${anime.status}</strong></div>
-                        <div class="data-item" if.bind="anime.episodeDuration">Episodes: <strong>${anime.episodes} </strong>x <strong>${anime.episodeDuration} </strong>= <strong>${anime.totalDuration} ${anime.totalDurationUnits}</strong></div>
-                        <div class="data-item" if.bind="anime.duration">Duration: <strong>${anime.duration}</strong></div>
-                        <div class="data-item">Season: <strong>${anime.season}</strong></div>
-                        <div class="data-item">Producers: <strong repeat.for="producer of anime.producers">${producer} </strong></div>
-                    </div>
-                    
-                    <div class="middle">
-                        <h1 class="anime-name thick-outline">${anime.name}</h1>
-                        <div class="synonyms">
-                            <span repeat.for="synonym of anime.synonyms">${synonym}.</span>
+            </div>
+            <div show.bind="screenWidth < 500 && toggleMobileDetails" class="mobile-details ${toggleMobileDetails ? 'h-max':'h0'}">
+                <div style="display: flex;">
+                    <div>
+                        <img src.bind="anime.boxArt" alt="" class="box-art-mobile">
+                        <div style="max-width: 100px;">
+                            <span if.bind="anime.synonyms[0]">${anime.synonyms[0]}</span>
                         </div>
-                        <p>${anime.description}</p>
                     </div>
-                  
-                    <div class="ranking-area side" >
-                        <div class="rank med-outline" if.bind="anime.rank">
+                    <div class="side">
+                        <div>Format: <strong>${anime.format}</strong></div>
+                        <div if.bind="anime.startDate && anime.endDate">Start Date: <strong>${anime.startDate}</strong> End Date: <strong>${anime.endDate}</strong></div>
+                        <div if.bind="anime.releaseDate">Release Date: <strong>${anime.releaseDate}</strong></div>
+                        <div>Status: <strong>${anime.status}</strong></div>
+                        <div if.bind="anime.episodeDuration">Episodes: <strong>${anime.episodes} </strong>x <strong>${anime.episodeDuration} </strong>= <strong>${anime.totalDuration} ${anime.totalDurationUnits}</strong></div>
+                        <div if.bind="anime.duration">Duration: <strong>${anime.duration}</strong></div>
+                        <div>Season: <strong>${anime.season}</strong></div>
+                        <div class="studio">
+                            Studio${anime.studios.length > 1? 's':''}:
+                            <span repeat.for="studio of anime.studios">
+                                <strong>${studio}</strong>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="genres-mobile">
+                    <div repeat.for="genre of anime.genres" class="genre">
+                        ${genre}
+                    </div>
+                </div>
+                <div>
+                    <p>${anime.description}</p>
+                </div>
+                <div class="ranks-mobile">
+                    <div class="rank-pair-mobile">
+                        <div class="rank-mobile med-outline" if.bind="anime.rank">
                             #${anime.rank}
                         </div>
-                        <div class="text thin-outline" if.bind="anime.rank">
+                        <div class="rank-text-mobile thin-outline" if.bind="anime.rank">
                             Highest Rated All Time
                         </div>
-                        <div class="rank med-outline" if.bind="anime.popularity">
+                    </div>
+                    <div class="rank-pair-mobile">
+                        <div class="rank-mobile med-outline" if.bind="anime.popularity">
                             #${anime.popularity}
                         </div>
-                        <div class="text thin-outline" if.bind="anime.popularity">
+                        <div class="rank-text-mobile thin-outline" if.bind="anime.popularity">
                             Most Popular ${anime.popTime}
                         </div>
                     </div>
                 </div>
-                
-                <div class="genres">
-                    <span repeat.for="genre of anime.genres" class="genre">
-                        ${genre}
-                    </span>
-                </div>
-            </section>
-         </div>
+            </div>
+        </div>
         <footer class="footer-area">
             <div class="text">Made by Shoyu<br/>Acknowledgements<br/>Loner, Jon, Kat</div>
             <div class="text"></div>

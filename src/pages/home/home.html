@@ -1,21 +1,19 @@
 <template>
-    <nav class="${scrollPosition > 90? 'header2':'header1'}">
-        <div class="${scrollPosition > 90? 'opacity0 no-display':'title opacity1'}">
-            <img src="/assets/images/logo.png" alt="" class="logo">
-            Shoyu's Anime Anthology
-        </div>
-        <div class="navigation ${scrollPosition > 90? 'opacity0':'opacity1'}">
-            <a repeat.for="route of router.routes" class="item ${route.navModel.isActive? 'active':''} " href.bind="route.route">${route.title}</a>
-        </div>
-        <div class="navigation2 ${scrollPosition > 90? 'opacity1':'opacity0 no-display'}">
-            <a class="item" click.delegate="scrollToTop()" style="font-family: monospace; font-size: 30px; cursor: pointer;">^</a>
-            <a repeat.for="route of router.routes" class="item ${route.navModel.isActive? 'active':''} " href.bind="route.route">${route.char}</a>
-        </div>
-    </nav>
+    <header></header>
     <section class="screenshot_area" style="padding-top: 120px; padding-bottom: 20px;">
       <div class="container">
-        <div class="main_title">
-          <h2>About</h2>This anthology is a collection of anime that I have seen. This anthology is different than a
+        <div class="cards">
+
+          <div repeat.for="level of levels" class="card" css="background-image: url(${level.image})">
+            <div class="level thin-outline">Level ${level.number}</div>
+            <div class="title thick-outline">${level.title}</div>
+            <div class="description thick-outline">${level.description}</div>
+          </div>
+
+
+
+
+          <!-- <h2>About</h2>This anthology is a collection of anime that I have seen. This anthology is different than a
           typical anime list because it categorizes the anime I've seen by <strong>how suitable the show is for viewers
             of varying levels of experience.</strong> For example, the monogatari series is rated highly by me, but it
           is level four because it is best watched by someone with more anime experience. Note that all anime positions
@@ -37,7 +35,7 @@
           <p>TODO</p>
           <h2>Combos</h2>Interesting show combos that may not be obvious: <br>Monogatari + Shoujo Shuumatsu Ryokou
           <br>Koi to Uso + Kuzu no Honkai and then watch Seishun Buta Yarou wa Bunny Girl Senpai no Yume wo Minai
-          <br>Overlord + Tensei shitara Slime Datta Ken <br>Steins;Gate + Death Note <br>
+          <br>Overlord + Tensei shitara Slime Datta Ken <br>Steins;Gate + Death Note <br> -->
         </div>
       </div>
     </section>

@@ -1,3 +1,6 @@
+@import "pages/level/level";
+@import "resources/components/header/header";
+
 $green: #06b124;
 $yellow: #c3981d;
 $orange: #ef874b;
@@ -21,97 +24,56 @@ $background-border: #252525;
   color: $red;
 }
 
-.header1 {
-  background: $background-border;
-  position: fixed;
-  width: 100%;
-  height: 80px;
-  top: 0px;
-  left: 0px;
+
+
+// Home
+.cards {
   display: flex;
-  overflow: hidden;
-  justify-content: space-around;
-  padding-top: 5px;
-  transition: height 0.5s ease-out 0ms,
-    width 0.5s ease-out 0.5s,
-    top 0.5s ease-out 0ms,
-    left 0.5s ease-out 0ms;
-  .title {
-    font-family: inherit;
-    font-size: x-large;
-    font-weight: 600;
-    color: $title-color;
-    transition: opacity 0.3s ease-out 1.0s;
-    display: flex;
-    align-items: center;
-    .logo {
-      width: 70px;
-      height: 70px;
+  min-height: 800px;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  .card {
+    text-align: center;
+    border-radius: 20px;
+    height: 200px;
+    width: 200px;
+    background-color: $background-border;
+    color: $subtitle-color;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    justify-content: center;
+    margin: 20px 20px;
+    border: 2px solid #505050;
+    .level {
+      position: absolute;
+      background-color: #505050;
+      border-radius: 5px;
+      width: fit-content;
+      padding: 0px 10px;
+      top: 20px;
+      left: -5px;
+      font-size: 18px;
     }
-  }
-  .navigation {
-    display: flex;
-    align-items: center;
-    transition: opacity 0.3s ease-out 1.0s;
-    .item {
-      display: flex;
-      height: fit-content;
-      cursor: pointer;
-      margin-right: 20px;
-      font-size: 20px;
-      color: $subtitle-color;
-      &.active {
-        border-bottom: 2px solid $green;
-      }
+    .title {
+      font-size: 34px;
+      font-weight: 700;
+      position: absolute;
+      align-self: center;
+      margin-bottom: 30px;
     }
-    .item:hover {
-      color: $text-color;
+    .description {
+      position: absolute;
+      align-self: center;
+      margin-top: 40px;
+      font-size: 16px;
+      font-weight: 700;
     }
-  }
-  &.fixed {
-    position: fixed;
-    z-index: 5;
   }
 }
 
-.header2 {
-  background: $background-border;
-  position: fixed;
-  overflow: hidden;
-  font-size: 25px;
-  left: 20px;
-  top: 40px;
-  width: 40px;
-  height: 300px;
-  transition: width 0.5s ease-out 0ms,
-    height 0.5s ease-out 0.5s,
-    top 0.5s ease-out 0ms,
-    left 0.5s ease-out 0ms;
-  z-index: 5;
-  border-radius: 20px;
-  .navigation2 {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    text-align: center;
-    height: 100%;
-    transition: opacity 0.5s ease-out 1.0s;
-    .angle-arrow {
-      font-family: monospace;
-      font-size: 30px;
-      cursor: pointer;
-    }
-    .item {
-      color: $subtitle-color;
-      &.active {
-        border-right: 1px solid $green;
-      }
-    }
-    .item:hover {
-      color: $text-color;
-    }
-  }
-}
+
+
 .opacity0 {
   opacity: 0;
   width: 0px;
@@ -151,163 +113,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
 }
 
-.main-title {
-  text-align: center;
-  background: $background-color;
-  padding-top: 120px;
-  padding-bottom: 20px;
-  h2 {
-    font-size: 36px;
-    color: $title-color;
-    font-weight: 600;
-    margin-bottom: 15px;
-  }
-  p {
-    font-size: 14px;
-    line-height: 24px;
-    color: $text-color;
-    margin-bottom: 0px;
-    max-width: 570px;
-    font-weight: normal;
-    margin: auto;
-  }
-}
 
-.background-image:before {
-  content: '';
-  position: absolute;
-  left: 0; 
-  right: 0;
-  top: 0px;
-  bottom: 925px;
-  background: linear-gradient(to top, rgba(255, 255, 255, 0), $background-color 100%);
-  opacity: 1;
-}
-.background-image {
-  background-size: cover;
-  background-attachment: fixed;
-  position: relative;
-  z-index: 0;
-  height: 1000px;
-  .box-art-area {
-    position: relative;
-    left: 80px;
-    top: 700px;
-    width: 356px;
-    .percent-upvoted {
-      font-family: fantasy;
-      font-size: 6rem;
-      transform: rotate(20deg);
-      position: absolute;
-      z-index: 2;
-      right: -60px;
-    }
-    .box-art-container {
-      text-align: left;
-      .box-art {
-        border: solid;
-        border-color: black;
-        position: relative;
-        z-index: 1;
-        box-shadow: -3px 3px 20px 0px black;
-        min-width: 350px;
-        min-height: 490px;
-      }
-    }
-    .studio {
-      text-align: center;
-      font-size: 2rem;
-      font-family: sans-serif;
-      color: $subtitle-color;
-      padding-bottom: 5px;
-      padding-top: 5px;
-    }
-  }
-}
-
-.details-container {
-    background-color: $background-color;
-    border-top: solid;
-    border-right: solid;
-    border-left: solid;
-    border-color: $background-border;
-    border-width: thick;
-    padding-top: 10px;
-    padding-left: 450px;
-    padding-right: 10px;
-    .main-details {
-      display: flex;
-      min-height: 210px;
-      .side {
-        min-width: 350px;
-        .data-item {
-
-        }
-      }
-      .middle {
-        text-align: center;
-        min-width: 730px;
-        .anime-name {
-          font-family: sans-serif;
-          color: $title-color;
-          margin-bottom: 0px;
-        }
-        .synonyms {
-          padding-bottom: 10px;
-        }
-      }
-      .ranking-area {
-        text-align: center;
-        justify-content: center;
-        flex-direction: column;
-        display: flex;
-        .rank {
-          font-family: fantasy;
-          font-size: 3rem;
-          color: $yellow;
-          margin-top: auto;
-        }
-        .text {
-          color: $subtitle-color;
-          padding-top: 15px;
-          font-family: sans-serif;
-          font-size: medium;
-          font-weight: 700;
-        }
-        .text:last-child {
-          margin-bottom: auto;
-        }
-      }
-      
-    }
-    .genres {
-      text-align: center;
-      padding-top: 10px;
-      padding-bottom: 10px;
-      width: 1430px;
-      .genre {
-        display: inline-block;
-        margin-right: 10px;
-        outline: none;
-        line-height: 40px;
-        padding: 0 15px;
-        font-size: 1em;
-        text-align: center;
-        text-decoration: none;
-        font-weight: 500;
-        cursor: pointer;
-        border: 1px solid $text-color;
-        border-radius: 20px;
-        color: $subtitle-color;
-      }
-      .genre:first-child {
-        margin-left: 10px;
-      }
-      .genre:last-child {
-        margin-right: 0px;
-      }
-    }
-}
 
 .thin-outline {
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
@@ -334,62 +140,7 @@ h1, h2, h3, h4, h5, h6 {
   height: 300px
 }
 
-.extra-info-area {
-  position: absolute;
-  display: flex;
-  top: 200px;
-  left: 355px;
-  z-index: 1;
-  .extra-info {
-    background: $background-color;
-    transition: width 0.4s ease-out 0ms;
-    height: 100px;
-    overflow: hidden;
-    border-radius: 0px 5px;
-    cursor: pointer;
-    display: flex;
-    .static-info-container {
-      min-width: 1400px;
-      display: flex;
-      flex-wrap: wrap;
-      .tag {
-        display: flex;
-        height: 15px;
-        padding-right: 20px;
-        padding-top: 10px;
-        align-items: center;
-        .name {
-          padding-right: 5px;
-        }
-        .progress-bar {
-          width: 100px;
-          height: 10px;
-          border: 1px solid $subtitle-color;
-          border-radius: 5px;
-          background-color: $background-color;
-          .progress {
-            height: 8px;
-            border-radius: 5px;
-            background: $green;
-          }
-        }
-      }
-    }
-  }
-  .w1400 {
-    width: 1400px;
-  }
-  .angle-icon {
-    cursor: pointer;
-    align-self: center;
-    background: $background-color;
-    font-size: 2rem;
-    font-weight: bold;
-    font-family: monospace;
-    border-radius: 0px 5px 5px 0px;
-    padding: 13px 5px 15px 0px;
-  }
-}
+
 
 .footer-area {
   background: $background-border;
@@ -398,5 +149,11 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: space-around;
   .text {
     color: $subtitle-color;
+  }
+}
+
+@media (min-width: 1250px) { //Supposed to be 1200px but the home page level cards fir nicely like this
+  .container {
+    max-width: 1230px;
   }
 }
