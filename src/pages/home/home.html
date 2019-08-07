@@ -1,22 +1,27 @@
 <template>
-    <header></header>
-    <section class="screenshot_area" style="padding-top: 120px; padding-bottom: 20px;">
+  
+    <section>
+      <div style="text-align: center; padding: 20px; background-color: #252525; font-size: 40px; font-weight: 700; line-height: normal; color: honeydew;" class="thick-outline">Shoyu's Anime Anthology</div>
       <div class="container">
+        <div style="color: honeydew; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto; padding-top: 10px;">
+          Welcome! This anthology is a collection of anime that I have seen. This anthology is different than a
+          typical anime list because it categorizes the anime I've seen by <strong>how suitable the show is for viewers
+          of varying levels of experience.</strong> For example, the monogatari series is highly rated, but it's 
+          level four because it's best watched by someone with more anime experience. Note that all anime positions
+          are subject to change.
+          </div>
         <div class="cards">
 
-          <div repeat.for="level of levels" class="card" css="background-image: url(${level.image})">
+          <a repeat.for="level of levels" class="card" css="background-image: url(${level.image})" href.bind="level.route">
             <div class="level thin-outline">Level ${level.number}</div>
             <div class="title thick-outline">${level.title}</div>
             <div class="description thick-outline">${level.description}</div>
-          </div>
-
-
-
+          </a>
 
           <!-- <h2>About</h2>This anthology is a collection of anime that I have seen. This anthology is different than a
           typical anime list because it categorizes the anime I've seen by <strong>how suitable the show is for viewers
-            of varying levels of experience.</strong> For example, the monogatari series is rated highly by me, but it
-          is level four because it is best watched by someone with more anime experience. Note that all anime positions
+            of varying levels of experience.</strong> For example, the monogatari series is highly rated, but it's 
+            level four because it's best watched by someone with more anime experience. Note that all anime positions
           are subject to change. <br>
           <h2>Levels</h2>There are 5 levels defined in this anthology. <br>Level 1: Shoyu's top 10 anime ever seen, in
           no particular order. I guarantee that at last one of these shows is in your top 10 as well. <br>Level 2:Other
