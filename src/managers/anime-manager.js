@@ -6000,7 +6000,7 @@ export class AnimeManager {
 				},
 				{
 					"id": "yuru-camp",
-					"name": "",
+					"name": "Yuru Camp",
 					"boxArt": "assets/anime/yuru-camp/images/yuru-camp-anilist-box-art.jpg",
 					"background": "assets/anime/yuru-camp/images/yuru-camp-anilist-cover.jpg",
 					"rank": "104",

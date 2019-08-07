@@ -12,6 +12,7 @@ export class Level {
     }
 
 	attached() {
+        document.getElementById("top").scrollIntoView();
         this.pickData()
         
         this.animeData.forEach(anime => {
