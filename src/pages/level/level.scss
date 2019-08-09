@@ -44,6 +44,35 @@ $background-border: #252525;
 
 }
 
+.tooltiptext {
+    visibility: hidden;
+    width: 100px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 12px;
+}
+.tool-tip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+.tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.7) transparent transparent transparent;
+}
+
 .details-container {
     display: flex;
     width: 100%;

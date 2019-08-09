@@ -1,17 +1,24 @@
 <template>
-  
-    <section>
-      <div style="text-align: center; padding: 20px; background-color: #252525; font-size: 40px; font-weight: 700; line-height: normal; color: honeydew;" class="thick-outline">Shoyu's Anime Anthology</div>
+    <section style="display: flex; flex-direction: column; align-items: center;">
+      <div style="width: 100%; text-align: center; padding: 20px; background-color: #252525; font-size: 40px; font-weight: 700; line-height: normal; color: honeydew;" class="thick-outline">Shoyu's Anime Anthology</div>
+      <div style="background-image: url(assets/images/home-hero.jpg); height: 500px; background-size: cover; background-position: 50% 70%; opacity: 0.7; width: 100%;">
+        <div class="container" style="align-items: center; height: 100%; display: flex; justify-content: center; align-items: center;">
+            <div style="color: honeydew; text-align: center; min-width: 800px; margin-left: auto; margin-right: auto; padding-top: 10px;     background-color: rgba(0,0,0,0.7);
+            border-radius: 80px;
+            font-size: 30px;
+            line-height: 40px;
+            padding: 20px 100px;
+            margin-top: 10px; height: fit-content;">
+                Welcome! This anthology is a collection of anime that I've seen. It's different than a
+                typical anime list because it categorizes the anime I've seen by <strong>how suitable the show is for viewers
+                of varying levels of experience.</strong> For example, the monogatari series is highly rated, but it's 
+                level four because it's best watched by someone with more anime experience. Note that all anime positions
+                are subject to change.
+            </div>
+        </div>
+      </div>
       <div class="container">
-        <div style="color: honeydew; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto; padding-top: 10px;">
-          Welcome! This anthology is a collection of anime that I have seen. This anthology is different than a
-          typical anime list because it categorizes the anime I've seen by <strong>how suitable the show is for viewers
-          of varying levels of experience.</strong> For example, the monogatari series is highly rated, but it's 
-          level four because it's best watched by someone with more anime experience. Note that all anime positions
-          are subject to change.
-          </div>
         <div class="cards">
-
           <a repeat.for="level of levels" class="card" css="background-image: url(${level.image})" href.bind="level.route">
             <div class="level thin-outline">Level ${level.number}</div>
             <div class="title thick-outline">${level.title}</div>

@@ -15,7 +15,7 @@ export class Home {
                 title: "Beginner",
                 description: "I'm new to anime",
                 color: "green",
-                image: "assets/images/dragon-teal.png", //Rabbit
+                image: "assets/images/rabbit-teal.png", //Rabbit
                 route: this.router.routes[1].route
             },
             {
@@ -23,7 +23,7 @@ export class Home {
                 title: "Novice",
                 description: "I've seen a few",
                 color: "blue",
-                image: "assets/images/dragon-teal.png", //cat
+                image: "assets/images/cat-teal.png", //cat
                 route: this.router.routes[2].route
             },
             {
@@ -31,7 +31,7 @@ export class Home {
                 title: "Intermediate",
                 description: "I've seen dozens",
                 color: "violet",
-                image: "assets/images/dragon-teal.png", //Wolf
+                image: "assets/images/wolf-teal.png", //Wolf
                 route: this.router.routes[3].route
             },
             {
@@ -39,7 +39,7 @@ export class Home {
                 title: "Advanced",
                 description: "I've seen hundreds",
                 color: "orange",
-                image: "assets/images/dragon-teal.png", //Griffin
+                image: "assets/images/griffin-teal.png", //Griffin
                 route: this.router.routes[4].route
             },
             {

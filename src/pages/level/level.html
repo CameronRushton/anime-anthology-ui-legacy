@@ -24,19 +24,19 @@
                         </div>
                     </div>
                     <div class="details">
-                            <div class="extra-info-area">
-                                    <div class="extra-info ${anime.toggleExtraInfo ? 'w1400':'w0'}" click.trigger="anime.toggleExtraInfo = !anime.toggleExtraInfo">
-                                        <div class="static-info-container">
-                                            <div repeat.for="tag of anime.customTags" class="tag">
-                                                <div class="name">${tag.name}</div>
-                                                <div class="progress-bar">
-                                                    <div class="progress" css="width: ${tag.percent}px;"></div>
-                                                </div>
+                        <div class="extra-info-area">
+                                <div class="extra-info ${anime.toggleExtraInfo ? 'w1400':'w0'}" click.trigger="anime.toggleExtraInfo = !anime.toggleExtraInfo">
+                                    <div class="static-info-container">
+                                        <div repeat.for="tag of anime.customTags" class="tag">
+                                            <div class="name">${tag.name}</div>
+                                            <div class="progress-bar">
+                                                <div class="progress" css="width: ${tag.percent}px;"></div>
                                             </div>
                                         </div>
                                     </div>
-                                    <a click.trigger="anime.toggleExtraInfo = !anime.toggleExtraInfo" class="angle-icon">></a>
                                 </div>
+                                <a click.trigger="anime.toggleExtraInfo = !anime.toggleExtraInfo" class="angle-icon">></a>
+                            </div>
                         <div class="bottom-details-container">
                             <div class="main-details">
                                 <div class="side">
@@ -64,7 +64,8 @@
                                 </div>
                             
                                 <div class="ranking-area">
-                                    <div class="rank-pair">
+                                    <div class="rank-pair tool-tip">
+                                        <span class="tooltiptext" style="bottom: 220px; margin-left: -45px;">Peak Rating Achieved</span>
                                         <div class="rank med-outline" if.bind="anime.rank">
                                             #${anime.rank}
                                         </div>
@@ -72,7 +73,8 @@
                                             Highest Rated All Time
                                         </div>
                                     </div>
-                                    <div class="rank-pair">
+                                    <div class="rank-pair tool-tip">
+                                        <span class="tooltiptext" style="bottom: 110px; margin-left: -45px;">Peak Popularity</span>
                                         <div class="rank med-outline" if.bind="anime.popularity">
                                             #${anime.popularity}
                                         </div>
