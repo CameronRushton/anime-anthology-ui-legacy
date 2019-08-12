@@ -1,17 +1,15 @@
 <template>
-    <section style="display: flex; flex-direction: column; align-items: center;">
-      <div style="width: 100%; text-align: center; padding: 20px; background-color: #252525; font-size: 40px; font-weight: 700; line-height: normal; color: honeydew;" class="thick-outline">Shoyu's Anime Anthology</div>
-      <div style="background-image: url(assets/images/home-hero.jpg); height: 500px; background-size: cover; background-position: 50% 70%; opacity: 0.7; width: 100%;">
-        <div class="container" style="align-items: center; height: 100%; display: flex; justify-content: center; align-items: center;">
-            <div style="color: honeydew; text-align: center; min-width: 800px; margin-left: auto; margin-right: auto; padding-top: 10px;     background-color: rgba(0,0,0,0.7);
-            border-radius: 80px;
-            font-size: 30px;
-            line-height: 40px;
-            padding: 20px 100px;
-            margin-top: 10px; height: fit-content;">
+    <section class="home-content">
+      <div class="title-bar thick-outline">
+        <img src="/assets/images/logo.png" alt="" class="logo" style="height: 70px;">
+        Shoyu's Anime Anthology
+      </div>
+      <div class="hero" style="background-image: url(assets/images/home-hero-gif.gif);">
+        <div class="container hero-content">
+            <div class="hero-description">
                 Welcome! This anthology is a collection of anime that I've seen. It's different than a
                 typical anime list because it categorizes the anime I've seen by <strong>how suitable the show is for viewers
-                of varying levels of experience.</strong> For example, the monogatari series is highly rated, but it's 
+                of varied levels of experience.</strong> For example, the monogatari series is highly rated, but it's 
                 level four because it's best watched by someone with more anime experience. Note that all anime positions
                 are subject to change.
             </div>
@@ -24,33 +22,15 @@
             <div class="title thick-outline">${level.title}</div>
             <div class="description thick-outline">${level.description}</div>
           </a>
-
-          <!-- <h2>About</h2>This anthology is a collection of anime that I have seen. This anthology is different than a
-          typical anime list because it categorizes the anime I've seen by <strong>how suitable the show is for viewers
-            of varying levels of experience.</strong> For example, the monogatari series is highly rated, but it's 
-            level four because it's best watched by someone with more anime experience. Note that all anime positions
-          are subject to change. <br>
-          <h2>Levels</h2>There are 5 levels defined in this anthology. <br>Level 1: Shoyu's top 10 anime ever seen, in
-          no particular order. I guarantee that at last one of these shows is in your top 10 as well. <br>Level 2:Other
-          great anime that didn't quite make the cut into the top 10. They are the runners up. <br>Level 3:These are
-          good and some are great anime, but for various reasons, didn't make it to the top. Generally, anime that are
-          in lower levels are worse, but this isn't always the case. You should watch these anime after you watch some
-          of the ones (or all) in the first two levels. At this point, you should be a certified weeb and are losing
-          your grip on life because of how great this is. <br>Level 4:This level has anime that I wouldn't recommend for
-          beginners. It may be complex, not define the anime genre well and turn people off or are just not good to
-          watch. Since you should watch shows in this level after you're done with the other three levels, you may find
-          some shows here to be either straight bad, or extremely interesting because of how complex or different the
-          show is. Quality is very hit or miss. This is near the end game. <br>Level 5:The end game. There is no more
-          good anime to watch. This is where you'll find the crap, cringe and everything in between. Maybe you like a
-          show in here - fine, but personally, I would recommend any other show from any other level first before even
-          mentioning that a show in this level exists. Venture here as a last resort.<h2>Index</h2>
-          <p>TODO</p>
+          <!--
           <h2>Combos</h2>Interesting show combos that may not be obvious: <br>Monogatari + Shoujo Shuumatsu Ryokou
           <br>Koi to Uso + Kuzu no Honkai and then watch Seishun Buta Yarou wa Bunny Girl Senpai no Yume wo Minai
           <br>Overlord + Tensei shitara Slime Datta Ken <br>Steins;Gate + Death Note <br> -->
         </div>
       </div>
     </section>
-  </div>
-
+    <footer class="footer-area">
+        <div class="text">Made by Shoyu<br/>Acknowledgements<br/>Loner, Jon, Kat</div>
+        <div class="text"></div>
+    </footer>
 </template>

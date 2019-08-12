@@ -2,8 +2,14 @@
     <section>
         <header></header>
         <div class="main-title">
-            <h2 class="med-outline">${level.name}</h2>
-            <p>${level.description}</p>
+            <div class="hero" css="background: url(${level.hero}); background-position: ${level.heroPosition}; background-size: cover;">
+                <div class="container hero-content">
+                    <div class="hero-description">
+                        <h2 class="med-outline" style="color: honeydew;">${level.name}</h2>
+                        <p style="color: honeydew; font-size: 18px; line-height: 25px;">${level.description}</p>
+                    </div>
+                </div>
+            </div>
         </div>
         <div repeat.for="anime of animeData">
             <div id="anime.name"
@@ -12,11 +18,13 @@
                 click.trigger="toggleMobileDetails = !toggleMobileDetails">
                 <div class="details-container">
                     <div class="box-art-area">
-                        <p class="percent-upvoted thin-outline ${anime.scoreColour}">${anime.score}%</p>
+                        <div class="percent-upvoted thin-outline tool-tip ${anime.scoreColour}">
+                            <span class="tooltiptext" style="bottom: 60px;">Mean Score</span>
+                            ${anime.score}%
+                        </div>
                         <div class="box-art-container">
                             <img src.bind="anime.boxArt" alt="" class="box-art">
                         </div>
-                        
                         <div class="studio thick-outline">
                             <span repeat.for="studio of anime.studios">
                                 <strong>${studio}</strong>
@@ -25,18 +33,18 @@
                     </div>
                     <div class="details">
                         <div class="extra-info-area">
-                                <div class="extra-info ${anime.toggleExtraInfo ? 'w1400':'w0'}" click.trigger="anime.toggleExtraInfo = !anime.toggleExtraInfo">
-                                    <div class="static-info-container">
-                                        <div repeat.for="tag of anime.customTags" class="tag">
-                                            <div class="name">${tag.name}</div>
-                                            <div class="progress-bar">
-                                                <div class="progress" css="width: ${tag.percent}px;"></div>
-                                            </div>
+                            <div class="extra-info ${anime.toggleExtraInfo ? 'w1400':'w0'}" click.trigger="anime.toggleExtraInfo = !anime.toggleExtraInfo">
+                                <div class="static-info-container">
+                                    <div repeat.for="tag of anime.customTags" class="tag">
+                                        <div class="name">${tag.name}</div>
+                                        <div class="progress-bar">
+                                            <div class="progress" css="width: ${tag.percent}px;"></div>
                                         </div>
                                     </div>
                                 </div>
-                                <a click.trigger="anime.toggleExtraInfo = !anime.toggleExtraInfo" class="angle-icon">></a>
                             </div>
+                            <a click.trigger="anime.toggleExtraInfo = !anime.toggleExtraInfo" class="angle-icon">></a>
+                        </div>
                         <div class="bottom-details-container">
                             <div class="main-details">
                                 <div class="side">
@@ -53,7 +61,7 @@
                                 <div class="middle">
                                     <h1 class="anime-name thick-outline">${anime.name}</h1>
                                     <div class="synonyms">
-                                        <span repeat.for="synonym of anime.synonyms">${synonym}.</span>
+                                        <span>${anime.synonyms[0]}</span>
                                     </div>
                                     <p>${anime.description}</p>
                                     <div class="genres">

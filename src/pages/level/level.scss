@@ -10,10 +10,16 @@ $background-border: #252525;
 // TODO: Check me for duplicate styles being applied for different screen sizes.
 // Example: If default is already display: flex, @media(max-width) doesnt need to override with another display: flex.
 .main-title {
+    height: 665px;
+    margin: auto;
+    max-width: 1310px;
     text-align: center;
     background: $background-color;
     padding-top: 120px;
-    padding-bottom: 20px;
+    .hero {
+        box-shadow: inset 4px 2px 9px 3px black;
+        height: 500px;
+    }
     h2 {
         font-size: 36px;
         color: $title-color;
@@ -31,6 +37,32 @@ $background-border: #252525;
     }
 }
 
+@media(max-width: 600px) {
+    .main-title {
+        height: auto;
+        padding-bottom: 35px;
+        .hero {
+            box-shadow: none;
+            height: auto;
+        }
+        h2 {
+            font-size: 36px;
+            color: $title-color;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        p {
+            font-size: 14px;
+            line-height: 24px;
+            color: $text-color;
+            margin-bottom: 0px;
+            max-width: 570px;
+            font-weight: normal;
+            margin: auto;
+        }
+    }
+}
+
 .background-image {
     background-size: cover;
     background-attachment: fixed;
@@ -40,8 +72,7 @@ $background-border: #252525;
     height: 1000px;
     display: flex;
     align-items: flex-end;
-    border-bottom: thick solid #252525;
-
+    box-shadow: inset 3px 16px 20px 0px black;
 }
 
 .tooltiptext {
@@ -56,7 +87,8 @@ $background-border: #252525;
     z-index: 1;
     opacity: 0;
     transition: opacity 0.3s;
-    font-size: 12px;
+    font-size: 14px;
+    font-family: sans-serif;
 }
 .tool-tip:hover .tooltiptext {
     visibility: visible;

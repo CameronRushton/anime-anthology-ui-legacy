@@ -12,7 +12,7 @@ $background-border: #252525;
     background: $background-border;
     position: fixed;
     width: 100%;
-    height: 80px;
+    height: 90px;
     top: 0px;
     left: 0px;
     display: flex;
@@ -68,7 +68,7 @@ $background-border: #252525;
       position: fixed;
       z-index: 1;
       width: 100%;
-      height: 80px;
+      height: 90px;
       top: 0px;
       left: 0px;
       display: flex;
@@ -84,7 +84,7 @@ $background-border: #252525;
         font-size: x-large;
         font-weight: 600;
         color: $title-color;
-        transition: opacity 0.3s ease-out 1.0s;
+        transition: opacity 0.3s ease-out 1.5s;
         display: flex;
         align-items: center;
         .logo {
@@ -140,19 +140,18 @@ $background-border: #252525;
   }
   
   // Header on side of screen
-  
   .header2 {
     background: $background-border;
     position: fixed;
     overflow: hidden;
     font-size: 25px;
     left: 20px;
-    top: 40px;
+    top: 250px;
     width: 40px;
     height: 300px;
     transition: width 0.5s ease-out 0ms,
       height 0.5s ease-out 0.5s,
-      top 0.5s ease-out 0ms,
+      top 0.5s ease-out 0.5s,
       left 0.5s ease-out 0ms;
     z-index: 5;
     border-radius: 20px;
@@ -162,7 +161,7 @@ $background-border: #252525;
       justify-content: space-evenly;
       text-align: center;
       height: 100%;
-      transition: opacity 0.5s ease-out 1.0s;
+      transition: opacity 0.5s ease-out 1.5s;
       .angle-arrow {
         font-family: monospace;
         font-size: 30px;
