@@ -112,6 +112,14 @@ $background-border: #252525;
         position: relative;
         padding: 0px 10px 0px 80px;
         margin-top: auto;
+        .watch-icon {
+            position: absolute;
+            z-index: 2;
+            margin: 10px;
+            .icon {
+                max-height: 50px;
+            }
+        }
         .percent-upvoted {
             font-family: fantasy;
             font-size: 6rem;

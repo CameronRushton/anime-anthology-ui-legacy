@@ -53,6 +53,12 @@ export class App {
 				moduleId: PLATFORM.moduleName('pages/level/level'),
 				activationStrategy: activationStrategy.replace,
 				title: "Level Five",
+			},
+			{
+				route: 'currently-watching',
+				moduleId: PLATFORM.moduleName('pages/level/level'),
+				activationStrategy: activationStrategy.replace,
+				title: "Currently Watching",
 			}
 		]);
 	}

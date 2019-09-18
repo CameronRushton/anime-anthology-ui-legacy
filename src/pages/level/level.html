@@ -1,7 +1,7 @@
 <template>
     <section>
         <header></header>
-        <div class="main-title">
+        <div if.bind="level.description" class="main-title">
             <div class="hero" css="background: url(${level.hero}); background-position: ${level.heroPosition}; background-size: cover;">
                 <div class="container hero-content">
                     <div class="hero-description">
@@ -11,13 +11,19 @@
                 </div>
             </div>
         </div>
+        <div else class="main-title" style="height: 10px">
+        </div>
         <div repeat.for="anime of animeData">
+            <!-- If.bind anime.seasonSelect, then grab the json data using the anime's name and display all the anime's season info instead.-->
             <div id="anime.name"
                 css="background-image: -webkit-linear-gradient(left, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.9) 100%), url(${anime.background});"
                 class="background-image"
                 click.trigger="toggleMobileDetails = !toggleMobileDetails">
                 <div class="details-container">
                     <div class="box-art-area">
+                        <a if.bind="anime.watch.netflix" href=${anime.watch.netflix} target="_blank" class="watch-icon">
+                            <img src="/assets/images/netflix-logo.png" class="icon"/>
+                        </a>
                         <div class="percent-upvoted thin-outline tool-tip ${anime.scoreColour}">
                             <span class="tooltiptext" style="bottom: 60px;">Mean Score</span>
                             ${anime.score}%

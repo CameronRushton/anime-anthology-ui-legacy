@@ -7,6 +7,7 @@ export class Header {
     constructor(router) {
         this.router = router;
         this.router.routes.forEach((route, index) => {
+            if (index > 5) return;
             if (route.name === "home") {
                 route.char = "H";
             } else {

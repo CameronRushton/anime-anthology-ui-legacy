@@ -15,17 +15,28 @@
             </div>
         </div>
       </div>
-      <div class="container">
-        <div class="cards">
-          <a repeat.for="level of levels" class="card" css="background-image: url(${level.image})" href.bind="level.route">
-            <div class="level thin-outline">Level ${level.number}</div>
-            <div class="title thick-outline">${level.title}</div>
-            <div class="description thick-outline">${level.description}</div>
-          </a>
-          <!--
-          <h2>Combos</h2>Interesting show combos that may not be obvious: <br>Monogatari + Shoujo Shuumatsu Ryokou
-          <br>Koi to Uso + Kuzu no Honkai and then watch Seishun Buta Yarou wa Bunny Girl Senpai no Yume wo Minai
-          <br>Overlord + Tensei shitara Slime Datta Ken <br>Steins;Gate + Death Note <br> -->
+      <div style="padding: 20px 0px; width: 100%;">
+        <div class="container">
+          <div class="cards">
+            <a repeat.for="level of levels" class="card" css="background-image: url(${level.image})" href.bind="level.route">
+              <div class="level thin-outline">Level ${level.number}</div>
+              <div class="title thick-outline">${level.title}</div>
+              <div class="description thick-outline">${level.description}</div>
+            </a>
+            <!--
+            <h2>Combos</h2>Interesting show combos that may not be obvious: <br>Monogatari + Shoujo Shuumatsu Ryokou
+            <br>Koi to Uso + Kuzu no Honkai and then watch Seishun Buta Yarou wa Bunny Girl Senpai no Yume wo Minai
+            <br>Overlord + Tensei shitara Slime Datta Ken <br>Steins;Gate + Death Note <br> -->
+          </div>
+        </div>
+      </div>
+      <div style="background-color: #202020; padding: 20px 0px; width: 100%;">
+        <div class="container">
+          <div class="cards">
+            <a class="card" style="border-color: #2db39c;" href.bind="router.routes[6].route">
+              <div class="title thick-outline">Watching this season</div>
+            </a>
+          </div>
         </div>
       </div>
     </section>

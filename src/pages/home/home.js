@@ -23,7 +23,7 @@ export class Home {
                 title: "Novice",
                 description: "I've seen a few",
                 color: "blue",
-                image: "assets/images/cat-teal.png", //cat
+                image: "assets/images/cat-teal.png", //Cat
                 route: this.router.routes[2].route
             },
             {
