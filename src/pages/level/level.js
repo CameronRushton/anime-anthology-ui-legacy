@@ -89,6 +89,11 @@ export class Level {
 
     isSeasoned(animeID) {
         // Check the season table for the anime ID. If it doesn't exist, return false
+        this.animeManager.getSeasoning().then(payload => {
+            payload.forEach(anime => {
+                
+            })
+        })
         // Check the group's anime IDs for the corresponding downloaded data. If all don't exist, return false
         // Call getSeasoning({group-xxx: [array of animeIDs]})
     }

@@ -1,0 +1,23 @@
+<template>
+    <section class="home-content">
+      <div class="title-bar thick-outline">
+        <img src="/assets/images/logo.png" alt="" class="logo" style="height: 70px;">
+        Shoyu's Anime Anthology
+      </div>
+      <div style="padding: 20px 0px; width: 100%;">
+        <div class="container">
+            <label>Anime Name</label>
+            <input type="text" value.bind="anime.name">
+            <button click.trigger="addAnime()">Add anime</button>
+            <br>
+            <label>Anime Name</label>
+            <input type="text" value.bind="anime.name">
+            <button click.trigger="getAnime()">Get anime</button>
+        </div>
+      </div>
+    </section>
+    <footer class="footer-area">
+        <div class="text">Made by Shoyu<br/>Acknowledgements<br/>Loner, Jon, Kat</div>
+        <div class="text"></div>
+    </footer>
+</template>

@@ -1,4 +1,6 @@
 export default {
-  debug: true,
-  testing: true
+	debug: true,
+	testing: false,
+	host: "http://localhost:5000/"
 };
+

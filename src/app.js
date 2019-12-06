@@ -59,6 +59,12 @@ export class App {
 				moduleId: PLATFORM.moduleName('pages/level/level'),
 				activationStrategy: activationStrategy.replace,
 				title: "Currently Watching",
+			},
+			{
+				route: 'admin',
+				name: "admin",
+				moduleId: PLATFORM.moduleName('pages/admin/admin'),
+				title: "Admin Panel",
 			}
 		]);
 	}
