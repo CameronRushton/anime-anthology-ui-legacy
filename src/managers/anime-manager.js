@@ -16,7 +16,6 @@ export class AnimeManager extends AbstractManager{
 			},
 			body: JSON.stringify(anime)
 		};
-		debugger
 		return this.httpClient.fetch(`api/admin/anime`, options)
 		.then(this.handleError)
 		.then(this.json);
@@ -72,5 +71,28 @@ export class AnimeManager extends AbstractManager{
 			}).then(payload => {
 				return payload
 			});
+	}
+
+	deleteBuddy(id) {
+		var options = {
+			method: "DELETE"
+		};
+
+		return this.httpClient.fetch(`delete?id=${id}`, options)
+			.then(this.handleError)
+			.then(this.json);
+	}
+
+	getBuddies() {
+		var options = {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json"
+			},
+		};
+
+		return this.httpClient.fetch(`buddies`, options)
+			.then(this.handleError)
+			.then(this.json);
 	}
 }

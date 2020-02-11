@@ -1,6 +1,6 @@
 export default {
 	debug: true,
 	testing: false,
-	host: "http://localhost:5000/"
+	host: "http://crushtonaddressbook.herokuapp.com/"//"http://localhost:5000/"
 };
 

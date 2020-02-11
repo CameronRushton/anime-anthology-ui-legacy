@@ -13,6 +13,10 @@
             <label>Anime Name</label>
             <input type="text" value.bind="anime.name">
             <button click.trigger="getAnime()">Get anime</button>
+            <br>
+            <label>Get Buddies</label>
+            <button click.trigger="deleteBuddy()">Get buddies</button>
+            <div repeat.for="buddy of buddies">${buddy.name}</div>
         </div>
       </div>
     </section>
